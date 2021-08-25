@@ -1,38 +1,56 @@
-.App {
-  text-align: center;
+* {
+	background-color: rgb(3, 3, 63);
+	background-color: rgb(7, 7, 107);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.chart-container {
+	position: relative;
+	height: 40rem;
+	width: 40rem;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.loader {
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.loading-1 {
+	width: 60px;
+	height: 60px;
+	color: var(--primary-color);
+	margin: auto;
+	margin-bottom: 2rem;
+	--c: linear-gradient(currentColor 0 0);
+	--r1: radial-gradient(farthest-side at bottom, currentColor 93%, #0000);
+	--r2: radial-gradient(farthest-side at top, currentColor 93%, #0000);
+	background: var(--c), var(--r1), var(--r2), var(--c), var(--r1), var(--r2),
+		var(--c), var(--r1), var(--r2);
+	background-repeat: no-repeat;
+	animation: db1 1s infinite alternate;
 }
 
-.App-link {
-  color: #61dafb;
+@keyframes db1 {
+	0%,
+	10% {
+		background-size: 8px 0, 8px 4px, 8px 4px;
+		background-position: 0 50%, 0 calc(50% - 2px), 0 calc(50% + 2px), 50% 50%,
+			50% calc(50% - 2px), 50% calc(50% + 2px), 100% 50%, 100% calc(50% - 2px),
+			100% calc(50% + 2px);
+	}
+	90%,
+	100% {
+		background-size: 8px 100%, 8px 4px, 8px 4px;
+		background-position: 0 50%, 0 -2px, 0 calc(100% + 2px), 50% 50%, 50% -2px,
+			50% calc(100% + 2px), 100% 50%, 100% -2px, 100% calc(100% + 2px);
+	}
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+@media (max-width: 1000px) {
+	.chart-container {
+		height: 20rem;
+		width: 20rem;
+	}
 }
