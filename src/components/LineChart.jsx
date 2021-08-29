@@ -133,20 +133,11 @@ export function LineChart() {
 		let prices = [];
 		let timestamps = [];
 
-		// if (sparkline.length) {
-		// 	sparkline[0].prices.forEach((item) => {
-		// 		prices.push(Math.round(item[1] * 100) / 100);
-		// 	});
-		// 	sparkline[0].prices.forEach((item) => {
-		// 		timestamps.push(formatDate(item[0]));
-		// 	});
-		// }
-
 		for (let i = 0; i <= 10; i++) {
-			timestamps.push(Math.floor(Math.random() * 100) + !1);
+			timestamps.push(i + 1);
 		}
 		for (let i = 0; i <= 10; i++) {
-			prices.push(Math.floor(Math.random() * 100) + !1);
+			prices.push(Math.floor(Math.random() * 100) + 1);
 		}
 
 		console.log(timestamps);
@@ -317,9 +308,9 @@ export function BTCChart() {
 				{
 					label: "prices",
 					data: prices,
-					borderColor: " #1652f0",
-					fill: false,
-					borderWidth: 1.7,
+					borderColor: "rgb(255,255,255)",
+					fill: true,
+					borderWidth: 1.2,
 				},
 			],
 		});
