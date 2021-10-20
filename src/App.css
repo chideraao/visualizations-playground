@@ -1,71 +1,78 @@
+@import url("https://fonts.googleapis.com/css2?family=Nova+Mono&family=Syne+Mono&family=Xanh+Mono&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,700;1,300;1,500;1,700&display=swap");
+
 * {
-	background-color: rgb(3, 3, 63);
-	background-color: rgb(7, 7, 107);
-	color: #ffffff;
+  background-color: rgb(3, 3, 63);
+  background-color: #fff;
+  color: #333;
+}
+
+h1 {
+  font-family: "Syne Mono", monospace;
 }
 
 .flex {
-	display: flex;
+  display: flex;
 }
 
 .chart-container {
-	position: relative;
-	height: 40rem;
-	width: 40rem;
+  position: relative;
+  height: 40rem;
+  width: 40rem;
 }
 
 img {
-	width: 3rem;
-	height: 3rem;
+  width: 3rem;
+  height: 3rem;
 }
 
 .loader {
-	height: 100vh;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	text-align: center;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 .loading-1 {
-	width: 60px;
-	height: 60px;
-	color: var(--primary-color);
-	margin: auto;
-	margin-bottom: 2rem;
-	--c: linear-gradient(currentColor 0 0);
-	--r1: radial-gradient(farthest-side at bottom, currentColor 93%, #0000);
-	--r2: radial-gradient(farthest-side at top, currentColor 93%, #0000);
-	background: var(--c), var(--r1), var(--r2), var(--c), var(--r1), var(--r2),
-		var(--c), var(--r1), var(--r2);
-	background-repeat: no-repeat;
-	animation: db1 1s infinite alternate;
+  width: 60px;
+  height: 60px;
+  color: var(--primary-color);
+  margin: auto;
+  margin-bottom: 2rem;
+  --c: linear-gradient(currentColor 0 0);
+  --r1: radial-gradient(farthest-side at bottom, currentColor 93%, #0000);
+  --r2: radial-gradient(farthest-side at top, currentColor 93%, #0000);
+  background: var(--c), var(--r1), var(--r2), var(--c), var(--r1), var(--r2),
+    var(--c), var(--r1), var(--r2);
+  background-repeat: no-repeat;
+  animation: db1 1s infinite alternate;
 }
 
 @keyframes db1 {
-	0%,
-	10% {
-		background-size: 8px 0, 8px 4px, 8px 4px;
-		background-position: 0 50%, 0 calc(50% - 2px), 0 calc(50% + 2px), 50% 50%,
-			50% calc(50% - 2px), 50% calc(50% + 2px), 100% 50%, 100% calc(50% - 2px),
-			100% calc(50% + 2px);
-	}
-	90%,
-	100% {
-		background-size: 8px 100%, 8px 4px, 8px 4px;
-		background-position: 0 50%, 0 -2px, 0 calc(100% + 2px), 50% 50%, 50% -2px,
-			50% calc(100% + 2px), 100% 50%, 100% -2px, 100% calc(100% + 2px);
-	}
+  0%,
+  10% {
+    background-size: 8px 0, 8px 4px, 8px 4px;
+    background-position: 0 50%, 0 calc(50% - 2px), 0 calc(50% + 2px), 50% 50%,
+      50% calc(50% - 2px), 50% calc(50% + 2px), 100% 50%, 100% calc(50% - 2px),
+      100% calc(50% + 2px);
+  }
+  90%,
+  100% {
+    background-size: 8px 100%, 8px 4px, 8px 4px;
+    background-position: 0 50%, 0 -2px, 0 calc(100% + 2px), 50% 50%, 50% -2px,
+      50% calc(100% + 2px), 100% 50%, 100% -2px, 100% calc(100% + 2px);
+  }
 }
 
 .chart-duration ul li {
-	cursor: pointer;
-	margin: 0.5rem;
+  cursor: pointer;
+  margin: 0.5rem;
 }
 
 @media (max-width: 1000px) {
-	.chart-container {
-		height: 20rem;
-		width: 20rem;
-	}
+  .chart-container {
+    height: 20rem;
+    width: 20rem;
+  }
 }
