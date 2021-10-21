@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 function Home() {
   return (
     <div>
-      <Link to="/lines"> Lines</Link>
+      <Link to="/lines"> Lines & Area</Link>
     </div>
   );
 }

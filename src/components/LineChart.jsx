@@ -14,6 +14,7 @@ import {
   UserDataContext,
 } from "../state/context/AppContext";
 import Loading from "./Loading";
+import ChartData from "../assets/area.json";
 
 const intlFormat = (num) => {
   return Intl.NumberFormat().format(num);
@@ -25,15 +26,27 @@ const formatDate = (str) => {
 };
 
 export function LineChart() {
-  const [sparkline, setSparkline] = useState({});
   const [dataChart, setDataChart] = useState({});
-  const [userData, setUserData] = useState({});
 
   /**chart js styling options */
   const chartOptions = {
     /** tooltip styling and logic */
     hover: { mode: "nearest", intersect: false, axis: "x" }, //allow tooltip to show once the mouse is at the nearest defined data item rather than only once it intersects
     plugins: {
+      title: {
+        display: true,
+        text: "Area Chart",
+        padding: {
+          top: 10,
+          bottom: 10,
+        },
+        font: {
+          family: '"Roboto", monospace',
+          weight: "500",
+          size: 18,
+          lineHeight: 1,
+        },
+      },
       tooltip: {
         //basic styling of the tooltip(onHover)
         mode: "nearest", //allow tooltip to show once the mouse is at the nearest defined data item rather than only once it intersects
@@ -41,14 +54,21 @@ export function LineChart() {
         axis: "x",
         enabled: true,
         displayColors: false, //remove the tiny colored box in the tooltip label
-        titleFontFamily: '"Roboto", sans-serif',
-        titleFontSize: 20,
-        titleFontStyle: "lighter",
         titleSpacing: 3,
-        titleMarginBottom: 16,
+        titleMarginBottom: 2,
         caretPadding: 6,
         caretSize: 4,
+        padding: 8,
         backgroundColor: "rgb(5, 15, 25)",
+        bodyAlign: "center",
+        titleColor: "#fff",
+        titleFont: {
+          family: '"Roboto", monospace',
+          weight: "500",
+          size: 18,
+          lineHeight: 1,
+        },
+
         xPadding: 12,
         yPadding: 12,
         titleAlign: "center",
@@ -56,18 +76,19 @@ export function LineChart() {
     },
     elements: {
       point: { radius: 0 }, //removes all the axis intersection points
-      line: { tension: 0.1 }, //makes the chart a little less curvy ;)
+      line: { tension: 0.4 }, //makes the chart a little less curvy ;)
     },
     legend: {
       display: false,
     },
     scales: {
       x: {
-        offset: true,
+        offset: false,
+        beginAtZero: false,
         grid: {
           color: "transparent",
           display: false, //removes gridline display
-          drawBorder: false,
+          drawBorder: true,
         },
         distribution: "series",
         display: true,
@@ -79,7 +100,7 @@ export function LineChart() {
           fontWeight: "300",
           padding: 0,
           fontColor: "rgba(17, 51, 83, 0.3)",
-          maxTicksLimit: 8,
+          maxTicksLimit: 20,
           minRotation: 0,
           maxRotation: 0,
         },
@@ -87,13 +108,15 @@ export function LineChart() {
 
       y: {
         display: true,
+        beginAtZero: true,
+
         ticks: {
-          display: false,
+          display: true,
         },
         grid: {
           color: "blue",
           display: false,
-          drawBorder: false,
+          drawBorder: true,
         },
       },
     },
@@ -101,41 +124,31 @@ export function LineChart() {
 
   useEffect(() => {
     /**creating empty arrays for the chart data and pushing the props gotten from home component */
-    let prices = [];
-    let timestamps = [];
+    let data = [];
+    let labels = [];
 
-    for (let i = 0; i <= 10; i++) {
-      timestamps.push(i + 1);
-    }
-    for (let i = 0; i <= 10; i++) {
-      prices.push(Math.floor(Math.random() * 100) + 1);
-    }
-
-    console.log(timestamps);
-    console.log(prices);
+    ChartData.AreaData.values.forEach((val) => {
+      labels.push(val.u);
+    });
+    ChartData.AreaData.values.forEach((val) => {
+      data.push(val.v);
+    });
 
     setDataChart({
-      labels: timestamps,
+      labels,
       datasets: [
         {
           type: "line",
           label: "prices",
-          data: prices,
-          borderColor: "rgb(204, 61, 204)",
-          fill: false,
+          data,
+          borderColor: "rgb(61, 75, 204)",
+          fill: "origin",
+          backgroundColor: "rgb(86, 94, 190)",
           borderWidth: 1.7,
-        },
-        {
-          type: "bar",
-          label: "prices",
-          data: [10, 23, 43, 23, 62, 32, 9, 2, 89, 72, 18],
-          borderColor: "rgb(211, 22, 117)",
-          fill: false,
-          borderWidth: 2.5,
         },
       ],
     });
-  }, [sparkline]);
+  }, []);
 
   return (
     <div className="chart-container">
@@ -173,17 +186,19 @@ export function BTCChart() {
         axis: "x",
         displayColors: false, //remove the tiny colored box in the tooltip label
         titleSpacing: 3,
-        titleMarginBottom: 16,
+        titleMarginBottom: 2,
         caretPadding: 6,
         caretSize: 4,
+        padding: 8,
         backgroundColor: "rgb(5, 15, 25)",
-        xPadding: 12,
-        yPadding: 12,
-        titleAlign: "center",
+        bodyAlign: "center",
         titleColor: "#fff",
-        titleFont: { family: '"Roboto", monospace', weight: "bold", size: 16 },
-        titleFontSize: 20,
-        titleFontStyle: "lighter",
+        titleFont: {
+          family: '"Roboto", monospace',
+          weight: "500",
+          size: 18,
+          lineHeight: 1,
+        },
 
         callbacks: {
           /** label color */
@@ -214,7 +229,7 @@ export function BTCChart() {
 
     scales: {
       x: {
-        offset: true,
+        offset: false,
         grid: {
           color: "transparent",
           display: false, //removes gridline display
@@ -231,7 +246,7 @@ export function BTCChart() {
           fontWeight: "500",
           padding: 0,
           fontColor: "rgba(17, 51, 83, 0.3)",
-          maxTicksLimit: 8,
+          maxTicksLimit: 9,
           minRotation: 0,
           maxRotation: 0,
           callback: function (value, index, values) {
@@ -279,7 +294,7 @@ export function BTCChart() {
         {
           label: "prices",
           data: prices,
-          borderColor: "#456fca",
+          borderColor: "#2764e7",
           fill: false,
           borderWidth: 1.5,
         },
@@ -290,57 +305,33 @@ export function BTCChart() {
   /** all onClick declarations below*/
   const handleDailyClick = (e) => {
     dispatch({ type: DAILY_CHART });
-    setIsLoading(true);
     setOption("1d");
-    setTimeout(() => {
-      setArrIndex(e.target.value);
-      setIsLoading(false);
-    }, 500);
+    setArrIndex(e.target.value);
   };
 
   const handleWeeklyClick = (e) => {
     dispatch({ type: WEEKLY_CHART });
-    setIsLoading(true);
     setOption("7d");
-    setTimeout(() => {
-      setArrIndex(e.target.value);
-      setIsLoading(false);
-    }, 1000);
+    setArrIndex(e.target.value);
   };
 
   const handleMonthlyClick = (e) => {
     dispatch({ type: MONTHLY_CHART });
-    setIsLoading(true);
     setOption("30d");
-    setTimeout(() => {
-      setArrIndex(e.target.value);
-      setIsLoading(false);
-    }, 1000);
+    setArrIndex(e.target.value);
   };
 
   const handleYearlyClick = (e) => {
     dispatch({ type: YEARLY_CHART });
-    setIsLoading(true);
     setOption("365d");
-    setTimeout(() => {
-      setArrIndex(e.target.value);
-      setIsLoading(false);
-    }, 1000);
+    setArrIndex(e.target.value);
   };
 
   const handleAllClick = (e) => {
     dispatch({ type: ALL_CHART });
-    setIsLoading(true);
     setOption("all");
-    setTimeout(() => {
-      setArrIndex(e.target.value);
-      setIsLoading(false);
-    }, 1000);
+    setArrIndex(e.target.value);
   };
-
-  console.log(userData);
-  console.log(cryptos);
-  console.log(sparkline);
 
   return (
     <div className="sparkline-container">

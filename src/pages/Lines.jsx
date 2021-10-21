@@ -132,16 +132,13 @@ function Lines() {
         console.log(err);
       });
 
-    return () => {
-      setCryptos([]);
-      setSparkline([]);
-    };
+    return () => {};
   }, [setCryptos, setSparkline, setUserData]);
 
   return (
-    <div>
-      <LineChart />
+    <div className="container">
       <BTCChart />
+      <LineChart />
     </div>
   );
 }

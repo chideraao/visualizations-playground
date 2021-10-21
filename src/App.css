@@ -3,8 +3,15 @@
 
 * {
   background-color: rgb(3, 3, 63);
-  background-color: #fff;
+  background-color: rgb(255, 255, 255);
   color: #333;
+}
+
+.container {
+  max-width: 1250px;
+  margin: 0 auto;
+  overflow: auto;
+  padding: 0 40px;
 }
 
 h1 {
@@ -17,8 +24,8 @@ h1 {
 
 .chart-container {
   position: relative;
-  height: 40rem;
-  width: 40rem;
+  height: 100%;
+  width: 60%;
 }
 
 img {
