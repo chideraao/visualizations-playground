@@ -1,5 +1,7 @@
 import React from "react";
 
-export function Bar() {
+function Bars() {
   return <div></div>;
 }
+
+export default Bars;

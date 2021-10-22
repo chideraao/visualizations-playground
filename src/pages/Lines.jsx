@@ -1,6 +1,13 @@
 import axios from "axios";
 import React, { useContext, useEffect } from "react";
-import { LineChart, BTCChart } from "../components/LineChart";
+import {
+  LineChart,
+  BTCChart,
+  WeatherChart,
+  MultiLine,
+  BoostModule,
+  StackedArea,
+} from "../components/LineChart";
 import {
   ClickContext,
   CryptosContext,
@@ -138,7 +145,11 @@ function Lines() {
   return (
     <div className="container">
       <BTCChart />
+      <BoostModule />
       <LineChart />
+      <StackedArea />
+      <MultiLine />
+      <WeatherChart />
     </div>
   );
 }

@@ -5,6 +5,7 @@ function Home() {
   return (
     <div>
       <Link to="/lines"> Lines & Area</Link>
+      <Link to="/bars">Bars </Link>
     </div>
   );
 }
