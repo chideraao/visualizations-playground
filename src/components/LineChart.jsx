@@ -158,7 +158,7 @@ export function LineChart() {
           data,
           borderColor: "rgb(61, 75, 204)",
           fill: "origin",
-          backgroundColor: "rgb(86, 94, 190)",
+          backgroundColor: "rgba(86, 94, 190,0.2)",
           hoverBackgroundColor: "rgb(61, 75, 204)",
           borderWidth: 1.7,
         },
@@ -236,7 +236,7 @@ export function StackedArea() {
     },
     elements: {
       point: { radius: 0 }, //removes all the axis intersection points
-      line: { tension: 0.4 }, //makes the chart a little less curvy ;)
+      line: { tension: 0.2 }, //makes the chart a little less curvy ;)
     },
     legend: {
       display: false,
@@ -252,6 +252,8 @@ export function StackedArea() {
         },
         distribution: "series",
         display: true,
+        stacked: true,
+
         ticks: {
           //basic styling of the ticks(axis)
           fontSize: 18,
@@ -269,6 +271,7 @@ export function StackedArea() {
       y: {
         display: true,
         beginAtZero: true,
+        stacked: true,
 
         ticks: {
           display: true,
@@ -655,7 +658,11 @@ export function MultiLine() {
         pointStart: 2006,
         pointInterval: 1,
       },
+      column: {
+        colorByPoint: true,
+      },
     },
+    colors: ["#4e4ed6", "#ca2626", "#8edcf0", "#ec11da", "#54832e"],
 
     series: [
       {
