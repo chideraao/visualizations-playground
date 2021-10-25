@@ -12,6 +12,10 @@ export function BarChart() {
     /** tooltip styling and logic */
     hover: { mode: "nearest", intersect: false, axis: "x" }, //allow tooltip to show once the mouse is at the nearest defined data item rather than only once it intersects
     plugins: {
+      legend: {
+        display: false,
+      },
+
       title: {
         display: true,
         text: "Simple Bar Chart",
@@ -66,13 +70,7 @@ export function BarChart() {
         },
       },
     },
-    elements: {
-      point: { radius: 0 }, //removes all the axis intersection points
-      line: { tension: 0.4 }, //makes the chart a little less curvy ;)
-    },
-    legend: {
-      display: false,
-    },
+
     scales: {
       x: {
         offset: true, //adds padding to the beginning and end of map
@@ -228,13 +226,7 @@ export function StackedBar() {
         },
       },
     },
-    elements: {
-      point: { radius: 0 }, //removes all the axis intersection points
-      line: { tension: 0.4 }, //makes the chart a little less curvy ;)
-    },
-    legend: {
-      display: false,
-    },
+
     scales: {
       x: {
         offset: true, //adds padding to the beginning and end of map
@@ -345,7 +337,7 @@ export function PopulationPyramid() {
 
   ChartData.PyramidData.values.forEach((val) => categories.push(val.Age));
   ChartData.PyramidData.values.forEach((val) => male.push(val.M));
-  ChartData.PyramidData.values.forEach((val) => female.push(val.F));
+  ChartData.PyramidData.values.forEach((val) => female.push(-val.F));
 
   let options = {
     chart: {

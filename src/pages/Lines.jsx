@@ -146,10 +146,10 @@ function Lines() {
     <div className="container">
       <BTCChart />
       <BoostModule />
+      <WeatherChart />
       <LineChart />
       <StackedArea />
       <MultiLine />
-      <WeatherChart />
     </div>
   );
 }

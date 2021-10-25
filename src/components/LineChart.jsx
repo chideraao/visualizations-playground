@@ -35,6 +35,9 @@ export function LineChart() {
     /** tooltip styling and logic */
     hover: { mode: "nearest", intersect: false, axis: "x" }, //allow tooltip to show once the mouse is at the nearest defined data item rather than only once it intersects
     plugins: {
+      legend: {
+        display: false,
+      },
       title: {
         display: true,
         text: "Area Chart",
@@ -93,9 +96,7 @@ export function LineChart() {
       point: { radius: 0 }, //removes all the axis intersection points
       line: { tension: 0.4 }, //makes the chart a little less curvy ;)
     },
-    legend: {
-      display: false,
-    },
+
     scales: {
       x: {
         offset: false,
@@ -238,9 +239,7 @@ export function StackedArea() {
       point: { radius: 0 }, //removes all the axis intersection points
       line: { tension: 0.2 }, //makes the chart a little less curvy ;)
     },
-    legend: {
-      display: false,
-    },
+
     scales: {
       x: {
         offset: false,

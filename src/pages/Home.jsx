@@ -11,7 +11,9 @@ function Home() {
         <li>
           <Link to="/bars">Bars </Link>
         </li>
-        <li></li>
+        <li>
+          <Link to="/pie">Pie & Donut</Link>
+        </li>
       </ul>
     </div>
   );
