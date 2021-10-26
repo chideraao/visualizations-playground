@@ -145,10 +145,10 @@ function Lines() {
   return (
     <div className="container">
       <BTCChart />
+      <StackedArea />
       <BoostModule />
       <WeatherChart />
       <LineChart />
-      <StackedArea />
       <MultiLine />
     </div>
   );

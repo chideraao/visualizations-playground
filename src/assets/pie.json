@@ -11,20 +11,32 @@
   },
   "RadarData": {
     "values": [
-      { "key": "key-0", "value": 19, "category": 0 },
-      { "key": "key-1", "value": 22, "category": 0 },
-      { "key": "key-2", "value": 14, "category": 0 },
-      { "key": "key-3", "value": 38, "category": 0 },
-      { "key": "key-4", "value": 23, "category": 0 },
-      { "key": "key-5", "value": 5, "category": 0 },
-      { "key": "key-6", "value": 27, "category": 0 },
-      { "key": "key-0", "value": 13, "category": 1 },
-      { "key": "key-1", "value": 12, "category": 1 },
-      { "key": "key-2", "value": 42, "category": 1 },
-      { "key": "key-3", "value": 13, "category": 1 },
-      { "key": "key-4", "value": 6, "category": 1 },
-      { "key": "key-5", "value": 15, "category": 1 },
-      { "key": "key-6", "value": 8, "category": 1 }
+      { "key": "Sales", "value": 35, "category": "Allocated budget" },
+      { "key": "Marketing", "value": 22, "category": "Allocated budget" },
+      { "key": "Development", "value": 26, "category": "Allocated budget" },
+      {
+        "key": "Customer Support",
+        "value": 22,
+        "category": "Allocated budget"
+      },
+      {
+        "key": "Information Technology",
+        "value": 23,
+        "category": "Allocated budget"
+      },
+      { "key": "Administration", "value": 12, "category": "Allocated budget" },
+      { "key": "HR", "value": 32, "category": "Allocated budget" },
+      { "key": "Sales", "value": 23, "category": "Actual Spending" },
+      { "key": "Marketing", "value": 32, "category": "Actual Spending" },
+      { "key": "Development", "value": 42, "category": "Actual Spending" },
+      { "key": "Customer Support", "value": 13, "category": "Actual Spending" },
+      {
+        "key": "Information Technology",
+        "value": 44,
+        "category": "Actual Spending"
+      },
+      { "key": "Administration", "value": 20, "category": "Actual Spending" },
+      { "key": "HR", "value": 24, "category": "Actual Spending" }
     ]
   }
 }

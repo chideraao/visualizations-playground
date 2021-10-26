@@ -173,165 +173,72 @@ export function LineChart() {
     </div>
   );
 }
+
 export function StackedArea() {
-  const [dataChart, setDataChart] = useState({});
+  const options = {
+    chart: {
+      type: "areaspline",
+    },
+    title: {
+      text: "Engagement Last 14 years",
+      align: "left",
+      padding: 40,
+    },
 
-  /**chart js styling options */
-  const chartOptions = {
-    /** tooltip styling and logic */
-    hover: { mode: "nearest", intersect: false, axis: "x" }, //allow tooltip to show once the mouse is at the nearest defined data item rather than only once it intersects
-    plugins: {
+    plotOptions: {
+      series: {
+        stacking: "normal",
+
+        label: {
+          connectorAllowed: false,
+        },
+        pointStart: 2008,
+        pointInterval: 1,
+      },
+      area: {
+        fillColor: null,
+      },
+    },
+
+    xAxis: {
+      gridLineWidth: 1,
+    },
+
+    yAxis: {
       title: {
-        display: true,
-        text: "Stacked Area Chart",
-        padding: {
-          top: 10,
-          bottom: 10,
-        },
-        font: {
-          family: '"Roboto", monospace',
-          weight: "500",
-          size: 18,
-          lineHeight: 1,
-        },
+        text: "",
       },
-      tooltip: {
-        //basic styling of the tooltip(onHover)
-        mode: "nearest", //allow tooltip to show once the mouse is at the nearest defined data item rather than only once it intersects
-        intersect: false, //allow tooltip to show once the mouse is at the nearest defined data item rather than only once it intersects
-        axis: "x",
-        enabled: true,
-        displayColors: false, //remove the tiny colored box in the tooltip label
-        titleSpacing: 3,
-        titleMarginBottom: 2,
-        caretPadding: 6,
-        caretSize: 4,
-        padding: 8,
-        backgroundColor: "rgb(255, 255, 255)",
-        bodyAlign: "center",
-        titleColor: "#333",
-        titleFont: {
-          family: '"Roboto", monospace',
-          weight: "500",
-          size: 18,
-          lineHeight: 1,
-        },
-
-        xPadding: 12,
-        yPadding: 12,
-        titleAlign: "center",
-        callbacks: {
-          /** label color */
-          labelColor: function (tooltipItem, chart) {
-            return {
-              borderColor: "rgb(5, 15, 25)",
-              backgroundColor: "rgb(5, 15, 25)",
-            };
-          },
-
-          labelTextColor: function (tooltipItem, chart) {
-            return "#333";
-          },
-        },
+      labels: {
+        format: "{value}",
       },
     },
-    elements: {
-      point: { radius: 0 }, //removes all the axis intersection points
-      line: { tension: 0.2 }, //makes the chart a little less curvy ;)
+
+    legend: {
+      layout: "horizontal",
+      align: "right",
+      verticalAlign: "center",
     },
 
-    scales: {
-      x: {
-        offset: false,
-        beginAtZero: false,
-        grid: {
-          color: "transparent",
-          display: false, //removes gridline display
-          drawBorder: true,
-        },
-        distribution: "series",
-        display: true,
-        stacked: true,
-
-        ticks: {
-          //basic styling of the ticks(axis)
-          fontSize: 18,
-          lineHeight: 1.2,
-          fontFamily: '"Roboto", sans-serif',
-          fontWeight: "300",
-          padding: 0,
-          fontColor: "rgba(17, 51, 83, 0.3)",
-          maxTicksLimit: 20,
-          minRotation: 0,
-          maxRotation: 0,
-        },
+    series: [
+      {
+        name: "Modules passed",
+        data: [
+          510, 420, 610, 520, 490, 525, 525, 495, 530, 520, 520, 510, 0, 5,
+        ],
       },
-
-      y: {
-        display: true,
-        beginAtZero: true,
-        stacked: true,
-
-        ticks: {
-          display: true,
-        },
-        grid: {
-          color: "blue",
-          display: false,
-          drawBorder: true,
-        },
+      {
+        name: "All submissions",
+        data: [100, 120, 110, 130, 90, 105, 125, 85, 100, 96, 100, 120, 0],
       },
+    ],
+    credits: {
+      enabled: false,
     },
   };
 
-  useEffect(() => {
-    /**creating empty arrays for the chart data and pushing the props gotten from home component */
-    let data = [];
-    let labels = [];
-    let dataStack = [];
-
-    ChartData.StackedData.values.forEach((val) => {
-      if (val.c === 0) {
-        labels.push(val.x);
-        data.push(val.y);
-      }
-    });
-    ChartData.StackedData.values.forEach((val) => {
-      if (val.c === 1) {
-        dataStack.push(val.y);
-      }
-    });
-
-    setDataChart({
-      labels,
-      datasets: [
-        {
-          type: "line",
-          label: "data1",
-          data,
-          borderColor: "rgba(61, 75, 204, .7)",
-          fill: "origin",
-          backgroundColor: "rgba(17, 233, 28, 0.1)",
-          hoverBackgroundColor: "rgb(61, 75, 204)",
-          borderWidth: 1.7,
-        },
-        {
-          type: "line",
-          label: "data2",
-          data: dataStack,
-          borderColor: "rgba(38, 53, 124, 0.7)",
-          fill: "origin",
-          backgroundColor: "rgba(94, 182, 233, 0.1)",
-          hoverBackgroundColor: "rgba(38, 53, 124, 0.7)",
-          borderWidth: 1.7,
-        },
-      ],
-    });
-  }, []);
-
   return (
-    <div className="chart-container">
-      <Line data={dataChart} options={chartOptions} />
+    <div style={{ minWidth: "360px", maxWidth: "800px", margin: "1em auto" }}>
+      <HighchartsReact highcharts={Highcharts} options={options} />
     </div>
   );
 }
@@ -877,7 +784,6 @@ export function BoostModule() {
   var n = 5000,
     data = getData(n);
 
-  console.time("line");
   var options = {
     chart: {
       zoomType: "x",
