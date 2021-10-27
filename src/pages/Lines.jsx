@@ -52,11 +52,6 @@ let past365 = date365.getDate() - 366;
 date365.setDate(past365);
 let yearUNIX = Math.floor(date365.getTime() / 1000);
 
-const formatFirstTrade = (str) => {
-  let firstTrade = new Date(`${str.slice(0, -1)}.000Z`);
-  return Math.floor(firstTrade.getTime() / 1000);
-};
-
 function Lines() {
   const [sparkline, setSparkline] = useContext(SparklineContext);
   const [cryptos, setCryptos] = useContext(CryptosContext);

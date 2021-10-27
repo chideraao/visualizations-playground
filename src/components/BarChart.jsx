@@ -451,6 +451,7 @@ export function PopulationPyramid() {
     </div>
   );
 }
+
 export function GroupedBar() {
   let zero = [];
   let one = [];

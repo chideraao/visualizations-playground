@@ -38,5 +38,8 @@
       { "key": "Administration", "value": 20, "category": "Actual Spending" },
       { "key": "HR", "value": 24, "category": "Actual Spending" }
     ]
+  },
+  "PolarData": {
+    "values": [124, 23, 77, 30, 102, 89]
   }
 }
