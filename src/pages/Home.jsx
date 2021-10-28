@@ -14,6 +14,12 @@ function Home() {
         <li>
           <Link to="/pie">Pie & Donut</Link>
         </li>
+        <li>
+          <Link to="/scatter">Bubble & Scatter Plots</Link>
+        </li>
+        <li>
+          <Link to="/scatter">OLHC & Candlesticks</Link>
+        </li>
       </ul>
     </div>
   );

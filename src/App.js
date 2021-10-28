@@ -5,6 +5,7 @@ import { AppProvider } from "./state/context/AppContext";
 import Home from "./pages/Home";
 import Bars from "./pages/Bars";
 import Pie from "./pages/Pie";
+import Scatter from "./pages/Scatter";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
             <Route component={Lines} path="/lines" />
             <Route component={Bars} path="/bars" />
             <Route component={Pie} path="/pie" />
+            <Route component={Scatter} path="/scatter" />
           </Switch>
         </Router>
       </div>

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import axios from "axios";
 import React, { useContext, useEffect } from "react";
 import {
@@ -9,7 +10,6 @@ import {
   StackedArea,
 } from "../components/LineChart";
 import {
-  ClickContext,
   CryptosContext,
   SparklineContext,
   UserDataContext,
@@ -55,7 +55,6 @@ let yearUNIX = Math.floor(date365.getTime() / 1000);
 function Lines() {
   const [sparkline, setSparkline] = useContext(SparklineContext);
   const [cryptos, setCryptos] = useContext(CryptosContext);
-  const [state, dispatch] = useContext(ClickContext);
   const [userData, setUserData] = useContext(UserDataContext);
 
   useEffect(() => {

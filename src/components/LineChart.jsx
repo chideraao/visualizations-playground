@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useContext, useEffect, useState } from "react";
 import { Line } from "react-chartjs-2";
 import {
@@ -161,7 +162,7 @@ export function LineChart() {
           fill: "origin",
           backgroundColor: "rgba(86, 94, 190,0.2)",
           hoverBackgroundColor: "rgb(61, 75, 204)",
-          borderWidth: 1.7,
+          borderWidth: 1,
         },
       ],
     });
