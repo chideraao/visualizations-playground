@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import Bars from "./pages/Bars";
 import Pie from "./pages/Pie";
 import Scatter from "./pages/Scatter";
+import CandleStick from "./pages/CandleStick";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             <Route component={Bars} path="/bars" />
             <Route component={Pie} path="/pie" />
             <Route component={Scatter} path="/scatter" />
+            <Route component={CandleStick} path="/ohlc-and-candlestick" />
           </Switch>
         </Router>
       </div>

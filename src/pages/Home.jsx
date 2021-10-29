@@ -18,7 +18,7 @@ function Home() {
           <Link to="/scatter">Bubble & Scatter Plots</Link>
         </li>
         <li>
-          <Link to="/scatter">OLHC & Candlesticks</Link>
+          <Link to="/ohlc-and-candlestick">OHLC & Candlesticks</Link>
         </li>
       </ul>
     </div>
