@@ -11,7 +11,6 @@ import FullScreen from "highcharts/modules/full-screen";
 import StockTools from "highcharts/modules/stock-tools";
 
 import "../App.css";
-
 HollowCandlestick(Highcharts);
 HeikinAshi(Highcharts);
 
@@ -24,80 +23,193 @@ StockTools(Highcharts);
 
 export function StockCharts({ market, ohlc }) {
   const [options, setOptions] = useState({
-    rangeSelector: {
-      allButtonsEnabled: true,
-      selected: 5,
+    chart: {
+      backgroundColor: "#2f2c49",
+      borderColor: "red",
+      borderRadius: 15,
+      height: 500,
     },
 
     title: {
       text: "Bitcoin Historical",
-    },
-
-    yAxis: [
-      {
-        labels: {
-          align: "right",
-          x: -3,
-        },
-        title: {
-          text: "OHLC",
-        },
-        height: "60%",
-        lineWidth: 2,
-        resize: {
-          enabled: true,
-        },
+      style: {
+        color: "#fff",
       },
-      {
-        labels: {
-          align: "right",
-          x: -3,
-        },
-        title: {
-          text: "Volume",
-        },
-        top: "65%",
-        height: "35%",
-        offset: 0,
-        lineWidth: 2,
-      },
-    ],
-
-    tooltip: {
-      split: true,
     },
 
     series: [
       {
         type: "candlestick",
         name: "Bitcoin",
+        id: "bitcoin",
         data: [],
-        dataGrouping: {
-          units: [
-            [
-              "week", // unit name
-              [1], // allowed multiples
-            ],
-            ["month", [1, 2, 3, 4, 6]],
-          ],
-        },
       },
       {
         type: "column",
         name: "Volume",
+        id: "volume",
         data: [],
         yAxis: 1,
-        dataGrouping: {
-          units: [
-            [
-              "week", // unit name
-              [1], // allowed multiples
-            ],
-            ["month", [1, 2, 3, 4, 6]],
-          ],
-        },
       },
     ],
+
+    rangeSelector: {
+      buttonTheme: {
+        // styles for the buttons
+        fill: "none",
+        stroke: "none",
+        "stroke-width": 0,
+        r: 8,
+        style: {
+          color: "#4F6C89",
+          fontWeight: "bold",
+        },
+        states: {
+          hover: {},
+          select: {
+            fill: "transparent",
+            style: {
+              color: "#D76F2A",
+            },
+          },
+        },
+      },
+      inputBoxBorderColor: "#4F6C89",
+      inputBoxWidth: 110,
+      inputBoxHeight: 18,
+      inputStyle: {
+        color: "#4F6C89",
+        fontWeight: "bold",
+      },
+      labelStyle: {
+        color: "#cbd1d6",
+        fontWeight: "bold",
+      },
+      selected: 5,
+    },
+
+    plotOptions: {
+      line: {
+        dashStyle: "dash",
+      },
+      series: {
+        borderColor: "red",
+      },
+      candlestick: {
+        lineColor: "#FB1809",
+        color: "#FB1809",
+        upColor: "#4EA64A",
+        upLineColor: "#4EA64A",
+      },
+      column: {
+        color: "#405466",
+      },
+    },
+
+    xAxis: {
+      lineWidth: 0.1,
+      tickColor: "#312e52",
+      crosshair: {
+        color: "#696777",
+        dashStyle: "dash",
+      },
+    },
+
+    yAxis: [
+      {
+        labels: {
+          align: "right",
+          x: -2,
+        },
+        height: "69%",
+        crosshair: {
+          dashStyle: "dash",
+          color: "#696777",
+        },
+
+        resize: {
+          enabled: true,
+          lineWidth: 1,
+          lineColor: "#312e52",
+        },
+        gridLineColor: "#312e52",
+        lineWidth: 0,
+        visible: true,
+      },
+      {
+        labels: {
+          align: "right",
+          x: -3,
+        },
+        top: "69%",
+        height: "31%",
+        offset: 0,
+        lineWidth: 0,
+        crosshair: false,
+        gridLineColor: "#312e52",
+        visible: true,
+      },
+    ],
+
+    tooltip: {
+      split: true,
+      // shadow: false,
+      // positioner: function (width, height, point) {
+      //   var chart = this.chart,
+      //     position;
+      //   if (point.isHeader) {
+      //     position = {
+      //       x: Math.max(
+      //         // Left side limit
+      //         chart.plotLeft,
+      //         Math.min(
+      //           point.plotX + chart.plotLeft - width / 2,
+      //           // Right side limit
+      //           chart.chartWidth - width - chart.marginRight
+      //         )
+      //       ),
+      //       y: point.plotY,
+      //     };
+      //   } else {
+      //     position = {
+      //       x: point.series.chart.plotLeft,
+      //       y: point.series.yAxis.top - chart.plotTop,
+      //     };
+      //   }
+      //   return position;
+      // },
+    },
+
+    stockTools: {
+      gui: {
+        enabled: false,
+      },
+    },
+
+    navigator: {
+      enabled: true,
+      height: 50,
+      margin: 10,
+      outlineColor: "#8380a5",
+      handles: {
+        backgroundColor: "#8380a5",
+        borderColor: "#e9d5d5",
+      },
+      xAxis: {
+        gridLineColor: "#8380a5",
+      },
+    },
+
+    scrollbar: {
+      barBackgroundColor: "#8380a5",
+      barBorderColor: "#8380a5",
+      barBorderRadius: 8,
+      buttonArrowColor: "#fff",
+      buttonBackgroundColor: "#405466",
+      rifleColor: "#fff",
+      trackBackgroundColor: "#e9d5d5",
+    },
+
     credits: {
       enabled: false,
     },
@@ -632,13 +744,6 @@ export function CandleSticks() {
   var ohlc = [],
     volume = [],
     dataLength = data.length,
-    groupingUnits = [
-      [
-        "week", // unit name
-        [1], // allowed multiples
-      ],
-      ["month", [1, 2, 3, 4, 6]],
-    ],
     i = 0;
 
   for (i; i < dataLength; i += 1) {
@@ -656,67 +761,193 @@ export function CandleSticks() {
     ]);
   }
   var options = {
-    rangeSelector: {
-      selected: 3,
+    chart: {
+      backgroundColor: "#2f2c49",
+      borderColor: "red",
+      borderRadius: 15,
+      height: 500,
     },
 
     title: {
       text: "AAPL Historical",
-    },
-
-    yAxis: [
-      {
-        labels: {
-          align: "right",
-          x: -3,
-        },
-        title: {
-          text: "OHLC",
-        },
-        height: "60%",
-        lineWidth: 2,
-        resize: {
-          enabled: true,
-        },
+      style: {
+        color: "#fff",
       },
-      {
-        labels: {
-          align: "right",
-          x: -3,
-        },
-        title: {
-          text: "Volume",
-        },
-        top: "65%",
-        height: "35%",
-        offset: 0,
-        lineWidth: 2,
-      },
-    ],
-
-    tooltip: {
-      split: true,
     },
 
     series: [
       {
         type: "candlestick",
         name: "AAPL",
+        id: "aapl",
         data: ohlc,
-        dataGrouping: {
-          units: groupingUnits,
-        },
       },
       {
         type: "column",
         name: "Volume",
+        id: "volume",
         data: volume,
         yAxis: 1,
-        dataGrouping: {
-          units: groupingUnits,
-        },
       },
     ],
+
+    rangeSelector: {
+      buttonTheme: {
+        // styles for the buttons
+        fill: "none",
+        stroke: "none",
+        "stroke-width": 0,
+        r: 8,
+        style: {
+          color: "#4F6C89",
+          fontWeight: "bold",
+        },
+        states: {
+          hover: {},
+          select: {
+            fill: "transparent",
+            style: {
+              color: "#D76F2A",
+            },
+          },
+        },
+      },
+      inputBoxBorderColor: "#4F6C89",
+      inputBoxWidth: 110,
+      inputBoxHeight: 18,
+      inputStyle: {
+        color: "#4F6C89",
+        fontWeight: "bold",
+      },
+      labelStyle: {
+        color: "#cbd1d6",
+        fontWeight: "bold",
+      },
+      selected: 3,
+    },
+
+    plotOptions: {
+      line: {
+        dashStyle: "dash",
+      },
+      series: {
+        borderColor: "red",
+      },
+      candlestick: {
+        lineColor: "#FB1809",
+        color: "#FB1809",
+        upColor: "#4EA64A",
+        upLineColor: "#4EA64A",
+      },
+      column: {
+        color: "#405466",
+      },
+    },
+
+    xAxis: {
+      lineWidth: 0.1,
+      tickColor: "#312e52",
+      crosshair: {
+        color: "#696777",
+        dashStyle: "dash",
+      },
+    },
+
+    yAxis: [
+      {
+        labels: {
+          align: "right",
+          x: -2,
+        },
+        height: "69%",
+        crosshair: {
+          dashStyle: "dash",
+          color: "#696777",
+        },
+
+        resize: {
+          enabled: true,
+          lineWidth: 1,
+          lineColor: "#312e52",
+        },
+        gridLineColor: "#312e52",
+        lineWidth: 0,
+        visible: true,
+      },
+      {
+        labels: {
+          align: "right",
+          x: -3,
+        },
+        top: "69%",
+        height: "31%",
+        offset: 0,
+        lineWidth: 0,
+        crosshair: false,
+        gridLineColor: "#312e52",
+        visible: true,
+      },
+    ],
+
+    tooltip: {
+      split: true,
+      // shadow: false,
+      // positioner: function (width, height, point) {
+      //   var chart = this.chart,
+      //     position;
+      //   if (point.isHeader) {
+      //     position = {
+      //       x: Math.max(
+      //         // Left side limit
+      //         chart.plotLeft,
+      //         Math.min(
+      //           point.plotX + chart.plotLeft - width / 2,
+      //           // Right side limit
+      //           chart.chartWidth - width - chart.marginRight
+      //         )
+      //       ),
+      //       y: point.plotY,
+      //     };
+      //   } else {
+      //     position = {
+      //       x: point.series.chart.plotLeft,
+      //       y: point.series.yAxis.top - chart.plotTop,
+      //     };
+      //   }
+      //   return position;
+      // },
+    },
+
+    stockTools: {
+      gui: {
+        enabled: false,
+      },
+    },
+
+    navigator: {
+      enabled: true,
+      height: 50,
+      margin: 10,
+      outlineColor: "#8380a5",
+      handles: {
+        backgroundColor: "#8380a5",
+        borderColor: "#e9d5d5",
+      },
+      xAxis: {
+        gridLineColor: "#8380a5",
+      },
+    },
+
+    scrollbar: {
+      barBackgroundColor: "#8380a5",
+      barBorderColor: "#8380a5",
+      barBorderRadius: 8,
+      buttonArrowColor: "#fff",
+      buttonBackgroundColor: "#405466",
+      rifleColor: "#fff",
+      trackBackgroundColor: "#e9d5d5",
+    },
+
     credits: {
       enabled: false,
     },

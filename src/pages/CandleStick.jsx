@@ -33,8 +33,8 @@ function CandleStick() {
   return (
     <div>
       <OHLCChart hlc={HLC} />
-      <CandleSticks market={market} ohlc={OHLC} />
       <StockCharts market={market} ohlc={OHLC} />
+      <CandleSticks market={market} ohlc={OHLC} />
     </div>
   );
 }

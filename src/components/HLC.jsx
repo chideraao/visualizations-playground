@@ -4,6 +4,13 @@ import Highcharts from "highcharts/highstock";
 
 export function OHLCChart({ hlc }) {
   const [options, setOptions] = useState({
+    chart: {
+      backgroundColor: "#2f2c49",
+      borderColor: "red",
+      borderRadius: 15,
+      height: 500,
+    },
+
     stockTools: {
       gui: {
         enabled: false,
@@ -11,11 +18,6 @@ export function OHLCChart({ hlc }) {
     },
     rangeSelector: {
       buttons: [
-        {
-          type: "minute",
-          count: 1,
-          text: "1m",
-        },
         {
           type: "hour",
           count: 1,
@@ -45,16 +47,13 @@ export function OHLCChart({ hlc }) {
           text: "OHLC",
         },
         height: "100%",
-        lineWidth: 2,
+        lineWidth: 0.4,
         resize: {
           enabled: true,
         },
+        crosshair: true,
       },
     ],
-
-    tooltip: {
-      split: true,
-    },
 
     series: [
       {
