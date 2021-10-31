@@ -1,12 +1,14 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { OHLCChart } from "../components/HLC.jsx";
+import { HeikenAshi, OHLCChart } from "../components/HLC.jsx";
 import { CandleSticks, StockCharts } from "../components/OHLCCharts";
 
 function CandleStick() {
   const [OHLC, setOHLC] = useState([]);
   const [market, setMarket] = useState([]);
   const [HLC, setHLC] = useState([]);
+  const [heikin, setHeikin] = useState([]);
+  const [ethMarket, setEthMarket] = useState([]);
 
   useEffect(() => {
     axios
@@ -18,23 +20,30 @@ function CandleStick() {
           `https://api.coingecko.com/api/v3/coins/bitcoin/ohlc?vs_currency=usd&days=365`
         ),
         axios.get(
-          `https://api.coingecko.com/api/v3/coins/bitcoin/ohlc?vs_currency=usd&days=1`
+          `https://api.coingecko.com/api/v3/coins/ethereum/ohlc?vs_currency=usd&days=14`
+        ),
+        axios.get(
+          `https://api.coingecko.com/api/v3/coins/ethereum/ohlc?vs_currency=usd&days=365`
+        ),
+        axios.get(
+          `https://api.coingecko.com/api/v3/coins/ethereum/market_chart?vs_currency=usd&days=365`
         ),
       ])
       .then((res) => {
         setMarket(res[0].data);
         setOHLC(res[1].data);
         setHLC(res[2].data);
+        setHeikin(res[3].data);
+        setEthMarket(res[4].data);
       });
   }, []);
-
-  console.log(OHLC);
 
   return (
     <div>
       <OHLCChart hlc={HLC} />
       <StockCharts market={market} ohlc={OHLC} />
-      <CandleSticks market={market} ohlc={OHLC} />
+      <CandleSticks />
+      <HeikenAshi heikin={heikin} market={ethMarket} />
     </div>
   );
 }
