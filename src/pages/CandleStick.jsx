@@ -1,7 +1,11 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { HeikenAshi, OHLCChart } from "../components/HLC.jsx";
-import { CandleSticks, StockCharts } from "../components/OHLCCharts";
+import { HeikenAshi, HLCChart, OHLCChart } from "../components/HLC.jsx";
+import {
+  CandleSticks,
+  CandlesticksvHeikin,
+  StockCharts,
+} from "../components/OHLCCharts";
 
 function CandleStick() {
   const [OHLC, setOHLC] = useState([]);
@@ -41,9 +45,11 @@ function CandleStick() {
   return (
     <div>
       <OHLCChart hlc={HLC} />
-      <StockCharts market={market} ohlc={OHLC} />
       <CandleSticks />
       <HeikenAshi heikin={heikin} market={ethMarket} />
+      <HLCChart ohlc={HLC} />
+      <CandlesticksvHeikin ohlc={OHLC} />
+      <StockCharts market={market} ohlc={OHLC} />
     </div>
   );
 }

@@ -25,13 +25,13 @@ StockTools(Highcharts);
 export function StockCharts({ market, ohlc }) {
   const [options, setOptions] = useState({
     chart: {
-      backgroundColor: "#2f2c49",
+      backgroundColor: "#1c1b2b",
       borderRadius: 15,
-      height: 500,
+      height: 600,
     },
 
     title: {
-      text: "Bitcoin 1y Candlestick & Volume",
+      text: "Candlestick, Volume & SMA Indicator",
       style: {
         color: "#fff",
       },
@@ -128,11 +128,14 @@ export function StockCharts({ market, ohlc }) {
       sma: {
         lineWidth: 1,
       },
+      klinger: {
+        color: "#10c210",
+      },
     },
 
     xAxis: {
       lineWidth: 0.1,
-      tickColor: "#312e52",
+      tickColor: "#1c1b2b",
       crosshair: {
         color: "#696777",
         dashStyle: "dash",
@@ -145,7 +148,7 @@ export function StockCharts({ market, ohlc }) {
           align: "right",
           x: -2,
         },
-        height: "69%",
+        height: "55%",
         crosshair: {
           dashStyle: "dash",
           color: "#696777",
@@ -153,10 +156,10 @@ export function StockCharts({ market, ohlc }) {
 
         resize: {
           enabled: true,
-          lineWidth: 1,
-          lineColor: "#312e52",
+          lineWidth: 2,
+          lineColor: "#1d1c30",
         },
-        gridLineColor: "#312e52",
+        gridLineColor: "#201d3a",
         lineWidth: 0,
         visible: true,
       },
@@ -165,44 +168,51 @@ export function StockCharts({ market, ohlc }) {
           align: "right",
           x: -3,
         },
-        top: "69%",
-        height: "31%",
+        top: "55%",
+        height: "30%",
         offset: 0,
         lineWidth: 0,
         crosshair: false,
-        gridLineColor: "#312e52",
+        gridLineColor: "#201d3a",
         visible: true,
+      },
+      {
+        top: "85%",
+        height: "15%",
       },
     ],
 
     tooltip: {
       shape: "rect",
       split: true,
-      // shadow: false,
-      // positioner: function (width, height, point) {
-      //   var chart = this.chart,
-      //     position;
-      //   if (point.isHeader) {
-      //     position = {
-      //       x: Math.max(
-      //         // Left side limit
-      //         chart.plotLeft,
-      //         Math.min(
-      //           point.plotX + chart.plotLeft - width / 2,
-      //           // Right side limit
-      //           chart.chartWidth - width - chart.marginRight
-      //         )
-      //       ),
-      //       y: point.plotY,
-      //     };
-      //   } else {
-      //     position = {
-      //       x: point.series.chart.plotLeft,
-      //       y: point.series.yAxis.top - chart.plotTop,
-      //     };
-      //   }
-      //   return position;
-      // },
+      valueDecimals: 2,
+
+      positioner: function (width, height, point) {
+        var chart = this.chart,
+          position;
+
+        if (point.isHeader) {
+          position = {
+            x: Math.max(
+              // Left side limit
+              0,
+              Math.min(
+                point.plotX + chart.plotLeft - width / 2,
+                // Right side limit
+                chart.chartWidth - width - chart.marginRight
+              )
+            ),
+            y: point.plotY,
+          };
+        } else {
+          position = {
+            x: point.series.chart.plotLeft,
+            y: point.series.yAxis.top - chart.plotTop,
+          };
+        }
+
+        return position;
+      },
     },
 
     stockTools: {
@@ -258,20 +268,279 @@ export function StockCharts({ market, ohlc }) {
           yAxis: 1,
         },
         {
-          type: "bb",
-          id: "overlay",
-          linkedTo: "bitcoin",
-          yAxis: 0,
-        },
-        {
           type: "sma",
           id: "overlay",
           linkedTo: "bitcoin",
           yAxis: 0,
         },
+        {
+          type: "klinger",
+          id: "oscillator",
+          linkedTo: "bitcoin",
+          params: {
+            volumeSeriesID: "volume",
+          },
+          yAxis: 2,
+        },
       ],
     }));
   }, [ohlc, market]);
+
+  return (
+    <div style={{ minWidth: "360px", maxWidth: "800px", margin: "1em auto" }}>
+      <HighchartsReact
+        highcharts={Highcharts}
+        constructorType={"stockChart"}
+        options={options}
+      />
+    </div>
+  );
+}
+export function CandlesticksvHeikin({ ohlc }) {
+  const [options, setOptions] = useState({
+    chart: {
+      backgroundColor: "#1c1b2b",
+      borderRadius: 15,
+      height: 600,
+    },
+
+    title: {
+      text: "Candlestick vs Heikin",
+      style: {
+        color: "#fff",
+      },
+    },
+
+    series: [],
+
+    rangeSelector: {
+      buttons: [
+        {
+          type: "month",
+          count: 1,
+          text: "1m",
+          title: "View 1 month",
+        },
+        {
+          type: "month",
+          count: 4,
+          text: "4m",
+          title: "View 4 months",
+        },
+        {
+          type: "month",
+          count: 8,
+          text: "8m",
+          title: "View 8 months",
+        },
+        {
+          type: "ytd",
+          text: "YTD",
+          title: "View year to date",
+        },
+        {
+          type: "all",
+          count: 1,
+          text: "All",
+          title: "View All",
+        },
+      ],
+      buttonTheme: {
+        // styles for the buttons
+        fill: "none",
+        stroke: "none",
+        "stroke-width": 0,
+        r: 8,
+        style: {
+          color: "#4F6C89",
+          fontWeight: "bold",
+        },
+        states: {
+          hover: {},
+          select: {
+            fill: "transparent",
+            style: {
+              color: "#D76F2A",
+            },
+          },
+        },
+      },
+      inputBoxBorderColor: "#4F6C89",
+      inputBoxWidth: 110,
+      inputBoxHeight: 18,
+      inputStyle: {
+        color: "#4F6C89",
+        fontWeight: "bold",
+      },
+      labelStyle: {
+        color: "#cbd1d6",
+        fontWeight: "bold",
+      },
+      selected: 5,
+    },
+
+    plotOptions: {
+      line: {
+        dashStyle: "dash",
+      },
+      series: {
+        borderColor: "red",
+        marker: {
+          enabled: false,
+          radius: 0,
+        },
+      },
+      candlestick: {
+        lineColor: "#FB1809",
+        color: "#FB1809",
+        upColor: "#4EA64A",
+        upLineColor: "#4EA64A",
+      },
+      heikinashi: {
+        lineColor: "#FB1809",
+        color: "#FB1809",
+        upColor: "#4EA64A",
+        upLineColor: "#4EA64A",
+      },
+
+      sma: {
+        lineWidth: 1,
+      },
+    },
+
+    xAxis: {
+      lineWidth: 0.1,
+      tickColor: "#1c1b2b",
+      crosshair: {
+        color: "#696777",
+        dashStyle: "dash",
+      },
+    },
+
+    yAxis: [
+      {
+        labels: {
+          align: "right",
+          x: -2,
+        },
+        height: "50%",
+        crosshair: {
+          dashStyle: "dash",
+          color: "#696777",
+        },
+
+        resize: {
+          enabled: true,
+          lineWidth: 2,
+          lineColor: "#1d1c30",
+        },
+        gridLineColor: "#201d3a",
+        lineWidth: 0,
+        visible: true,
+      },
+      {
+        labels: {
+          align: "right",
+          x: -3,
+        },
+        top: "50%",
+        height: "50%",
+        offset: 0,
+        lineWidth: 0,
+        crosshair: false,
+        gridLineColor: "#201d3a",
+        visible: true,
+      },
+    ],
+
+    tooltip: {
+      shape: "rect",
+      split: true,
+      valueDecimals: 2,
+
+      positioner: function (width, height, point) {
+        var chart = this.chart,
+          position;
+
+        if (point.isHeader) {
+          position = {
+            x: Math.max(
+              // Left side limit
+              0,
+              Math.min(
+                point.plotX + chart.plotLeft - width / 2,
+                // Right side limit
+                chart.chartWidth - width - chart.marginRight
+              )
+            ),
+            y: point.plotY,
+          };
+        } else {
+          position = {
+            x: point.series.chart.plotLeft,
+            y: point.series.yAxis.top - chart.plotTop,
+          };
+        }
+
+        return position;
+      },
+    },
+
+    stockTools: {
+      gui: {
+        enabled: false,
+      },
+    },
+
+    navigator: {
+      enabled: true,
+      height: 50,
+      margin: 10,
+      outlineColor: "#8380a5",
+      handles: {
+        backgroundColor: "#8380a5",
+        borderColor: "#e9d5d5",
+      },
+      xAxis: {
+        gridLineColor: "#8380a5",
+      },
+    },
+
+    scrollbar: {
+      barBackgroundColor: "#8380a5",
+      barBorderColor: "#8380a5",
+      barBorderRadius: 8,
+      buttonArrowColor: "#fff",
+      buttonBackgroundColor: "#405466",
+      rifleColor: "#fff",
+      trackBackgroundColor: "#e9d5d5",
+    },
+
+    credits: {
+      enabled: false,
+    },
+  });
+
+  useEffect(() => {
+    setOptions((prevState) => ({
+      ...prevState,
+      series: [
+        {
+          type: "candlestick",
+          name: "Bitcoin Candlestick",
+          id: "bitcoin",
+          data: ohlc,
+        },
+        {
+          type: "heikinashi",
+          name: "Bitcoin Heikin",
+          id: "bitcoinheikin",
+          data: ohlc,
+          yAxis: 1,
+        },
+      ],
+    }));
+  }, [ohlc]);
 
   return (
     <div style={{ minWidth: "360px", maxWidth: "800px", margin: "1em auto" }}>
@@ -308,13 +577,13 @@ export function CandleSticks() {
   }
   var options = {
     chart: {
-      backgroundColor: "#212121",
+      backgroundColor: "#1c1b2b",
       borderRadius: 15,
-      height: 500,
+      height: 600,
     },
 
     title: {
-      text: "AAPL Historical",
+      text: "Candlestick, Volume & Awesome Oscillator",
       style: {
         color: "#fff",
       },
@@ -329,11 +598,19 @@ export function CandleSticks() {
         tooltip: {
           pointFormat:
             '<span style="color:{point.color}">●</span>' +
-            "<b> {series.name} </b>" +
             "Open: {point.open} " +
             "High: {point.high} " +
             "Low: {point.low} " +
             "Close: {point.close}",
+        },
+      },
+      {
+        type: "abands",
+        id: "overlay",
+        linkedTo: "aapl",
+        yAxis: 0,
+        tooltip: {
+          valueDecimals: 2,
         },
       },
       {
@@ -344,10 +621,10 @@ export function CandleSticks() {
         yAxis: 1,
       },
       {
-        type: "pc",
-        id: "overlay",
+        type: "ao",
+        id: "oscillator",
         linkedTo: "aapl",
-        yAxis: 0,
+        yAxis: 2,
       },
     ],
 
@@ -406,8 +683,21 @@ export function CandleSticks() {
       column: {
         color: "#435564",
       },
-      pc: {
-        color: "#e2c623",
+      abands: {
+        lineWidth: 1,
+        lineColor: "#20a0b1",
+        bottomLine: {
+          styles: {
+            lineWidth: 0.5,
+            lineColor: "#fcfc27",
+          },
+        },
+        topLine: {
+          styles: {
+            lineWidth: 0.5,
+            lineColor: "#2efc27",
+          },
+        },
       },
     },
 
@@ -426,7 +716,7 @@ export function CandleSticks() {
           align: "right",
           x: -2,
         },
-        height: "69%",
+        height: "60%",
         crosshair: {
           dashStyle: "dash",
           snap: false,
@@ -435,10 +725,10 @@ export function CandleSticks() {
 
         resize: {
           enabled: true,
-          lineWidth: 1,
-          lineColor: "#211d44",
+          lineWidth: 2,
+          lineColor: "#1d1c30",
         },
-        gridLineColor: "#211d44",
+        gridLineColor: "#201d3a",
         lineWidth: 0,
         visible: true,
       },
@@ -447,8 +737,8 @@ export function CandleSticks() {
           align: "right",
           x: -3,
         },
-        top: "69%",
-        height: "31%",
+        top: "60%",
+        height: "19.5%",
         offset: 0,
         lineWidth: 0,
         crosshair: {
@@ -456,8 +746,13 @@ export function CandleSticks() {
           snap: false,
           color: "#696777",
         },
-        gridLineColor: "#211d44",
+        gridLineColor: "#201d3a",
         visible: true,
+      },
+      {
+        top: "80%",
+        height: "20%",
+        gridLineColor: "#201d3a",
       },
     ],
 
@@ -465,6 +760,8 @@ export function CandleSticks() {
       split: true,
       shape: "rect",
       shadow: false,
+      valueDecimals: 2,
+
       positioner: function (width, height, point) {
         var chart = this.chart,
           position;
