@@ -26,7 +26,7 @@ h1 {
 .chart-container {
   position: relative;
   height: 100%;
-  width: 60%;
+  width: 75%;
   padding-bottom: 2rem;
 }
 
@@ -81,7 +81,7 @@ img {
 
 @media (max-width: 1000px) {
   .chart-container {
-    height: 20rem;
-    width: 20rem;
+    height: 100%;
+    width: 90%;
   }
 }

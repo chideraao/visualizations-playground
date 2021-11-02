@@ -812,3 +812,140 @@ export function HeikenAshi({ heikin, market }) {
     </div>
   );
 }
+
+export function BTCChart({ splineData }) {
+  const [options, setOptions] = useState({
+    chart: {
+      backgroundColor: "#1c1b2b",
+      borderRadius: 15,
+      height: 600,
+    },
+
+    title: {
+      text: "Line Chart Showing Prices",
+      style: {
+        color: "#fff",
+      },
+    },
+
+    series: [],
+
+    rangeSelector: {
+      buttonTheme: {
+        // styles for the buttons
+        fill: "none",
+        stroke: "none",
+        "stroke-width": 0,
+        r: 8,
+        style: {
+          color: "#4F6C89",
+          fontWeight: "bold",
+        },
+        states: {
+          hover: {},
+          select: {
+            fill: "transparent",
+            style: {
+              color: "#D76F2A",
+            },
+          },
+        },
+      },
+      buttonPosition: {
+        x: -20,
+      },
+      inputEnabled: false,
+      labelStyle: {
+        display: "none",
+      },
+      selected: 5,
+    },
+
+    plotOptions: {
+      line: {
+        dashStyle: "dash",
+      },
+      series: {
+        borderColor: "red",
+        marker: {
+          enabled: false,
+          radius: 0,
+        },
+      },
+    },
+
+    xAxis: {
+      lineWidth: 0.1,
+      tickColor: "#1c1b2b",
+      crosshair: false,
+    },
+
+    yAxis: [
+      {
+        labels: {
+          align: "right",
+          x: -2,
+        },
+        height: "100%",
+        crosshair: false,
+
+        resize: {
+          enabled: true,
+          lineWidth: 2,
+          lineColor: "#1d1c30",
+        },
+        gridLineColor: "#201d3a",
+        lineWidth: 0,
+        visible: true,
+      },
+    ],
+
+    tooltip: {
+      shape: "rect",
+      split: true,
+      valueDecimals: 2,
+    },
+
+    stockTools: {
+      gui: {
+        enabled: false,
+      },
+    },
+
+    navigator: {
+      enabled: false,
+    },
+
+    scrollbar: {
+      enabled: false,
+    },
+
+    credits: {
+      enabled: false,
+    },
+  });
+
+  useEffect(() => {
+    setOptions((prevState) => ({
+      ...prevState,
+      series: [
+        {
+          type: "spline",
+          name: "Bitcoin",
+          id: "bitcoin",
+          data: splineData.prices,
+        },
+      ],
+    }));
+  }, [splineData]);
+
+  return (
+    <div style={{ minWidth: "360px", maxWidth: "800px", margin: "1em auto" }}>
+      <HighchartsReact
+        highcharts={Highcharts}
+        constructorType={"stockChart"}
+        options={options}
+      />
+    </div>
+  );
+}

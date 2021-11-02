@@ -305,7 +305,7 @@ export function CandlesticksvHeikin({ ohlc }) {
     },
 
     title: {
-      text: "Candlestick vs Heikin",
+      text: "Candlestick vs Heikin Ashi",
       style: {
         color: "#fff",
       },
@@ -592,8 +592,8 @@ export function CandleSticks() {
     series: [
       {
         type: "candlestick",
-        name: "AAPL",
-        id: "aapl",
+        name: "MSFT",
+        id: "msft",
         data: ohlc,
         tooltip: {
           pointFormat:
@@ -607,7 +607,7 @@ export function CandleSticks() {
       {
         type: "abands",
         id: "overlay",
-        linkedTo: "aapl",
+        linkedTo: "msft",
         yAxis: 0,
         tooltip: {
           valueDecimals: 2,
@@ -623,7 +623,7 @@ export function CandleSticks() {
       {
         type: "ao",
         id: "oscillator",
-        linkedTo: "aapl",
+        linkedTo: "msft",
         yAxis: 2,
       },
     ],
@@ -824,6 +824,196 @@ export function CandleSticks() {
       enabled: false,
     },
   };
+
+  return (
+    <div style={{ minWidth: "360px", maxWidth: "800px", margin: "1em auto" }}>
+      <HighchartsReact
+        highcharts={Highcharts}
+        constructorType={"stockChart"}
+        options={options}
+      />
+    </div>
+  );
+}
+
+export function AreaSpline({ splineData }) {
+  const [options, setOptions] = useState({
+    chart: {
+      backgroundColor: "#1c1b2b",
+      borderRadius: 15,
+      height: 600,
+    },
+
+    title: {
+      text: "Spline Chart Showing Prices",
+      style: {
+        color: "#fff",
+      },
+    },
+
+    series: [],
+
+    rangeSelector: {
+      buttonTheme: {
+        // styles for the buttons
+        fill: "none",
+        stroke: "none",
+        "stroke-width": 0,
+        r: 8,
+        style: {
+          color: "#4F6C89",
+          fontWeight: "bold",
+        },
+        states: {
+          hover: {},
+          select: {
+            fill: "transparent",
+            style: {
+              color: "#D76F2A",
+            },
+          },
+        },
+      },
+      inputBoxBorderColor: "#4F6C89",
+      inputBoxWidth: 110,
+      inputBoxHeight: 18,
+      inputStyle: {
+        color: "#4F6C89",
+        fontWeight: "bold",
+      },
+      labelStyle: {
+        color: "#cbd1d6",
+        fontWeight: "bold",
+      },
+      selected: 5,
+    },
+
+    plotOptions: {
+      line: {
+        dashStyle: "dash",
+      },
+      series: {
+        borderColor: "red",
+        marker: {
+          enabled: false,
+          radius: 0,
+        },
+      },
+    },
+
+    xAxis: {
+      lineWidth: 0.1,
+      tickColor: "#1c1b2b",
+      crosshair: {
+        color: "#696777",
+        dashStyle: "dash",
+      },
+    },
+
+    yAxis: [
+      {
+        labels: {
+          align: "right",
+          x: -2,
+        },
+        height: "100%",
+        crosshair: {
+          dashStyle: "dash",
+          color: "#696777",
+        },
+
+        resize: {
+          enabled: true,
+          lineWidth: 2,
+          lineColor: "#1d1c30",
+        },
+        gridLineColor: "#201d3a",
+        lineWidth: 0,
+        visible: true,
+      },
+    ],
+
+    tooltip: {
+      shape: "rect",
+      split: true,
+      valueDecimals: 2,
+
+      positioner: function (width, height, point) {
+        var chart = this.chart,
+          position;
+
+        if (point.isHeader) {
+          position = {
+            x: Math.max(
+              // Left side limit
+              0,
+              Math.min(
+                point.plotX + chart.plotLeft - width / 2,
+                // Right side limit
+                chart.chartWidth - width - chart.marginRight
+              )
+            ),
+            y: point.plotY,
+          };
+        } else {
+          position = {
+            x: point.series.chart.plotLeft,
+            y: point.series.yAxis.top - chart.plotTop,
+          };
+        }
+
+        return position;
+      },
+    },
+
+    stockTools: {
+      gui: {
+        enabled: false,
+      },
+    },
+
+    navigator: {
+      enabled: true,
+      height: 50,
+      margin: 10,
+      outlineColor: "#8380a5",
+      handles: {
+        backgroundColor: "#8380a5",
+        borderColor: "#e9d5d5",
+      },
+      xAxis: {
+        gridLineColor: "#8380a5",
+      },
+    },
+
+    scrollbar: {
+      barBackgroundColor: "#8380a5",
+      barBorderColor: "#8380a5",
+      barBorderRadius: 8,
+      buttonArrowColor: "#fff",
+      buttonBackgroundColor: "#405466",
+      rifleColor: "#fff",
+      trackBackgroundColor: "#e9d5d5",
+    },
+
+    credits: {
+      enabled: false,
+    },
+  });
+
+  useEffect(() => {
+    setOptions((prevState) => ({
+      ...prevState,
+      series: [
+        {
+          type: "spline",
+          name: "Bitcoin",
+          id: "bitcoin",
+          data: splineData.prices,
+        },
+      ],
+    }));
+  }, [splineData]);
 
   return (
     <div style={{ minWidth: "360px", maxWidth: "800px", margin: "1em auto" }}>
