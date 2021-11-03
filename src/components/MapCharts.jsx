@@ -2,8 +2,9 @@ import React from "react";
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 import HighchartsMaps from "highcharts/modules/map";
-import WorldMapGeo from "../assets/WorldMap";
+import WorldMapGeo from "@highcharts/map-collection/custom/world-palestine-highres.geo.json";
 import WorldMapData from "../assets/mapdata.json";
+import USMapGeoJSON from "@highcharts/map-collection/countries/us/us-all-all.geo.json";
 
 HighchartsMaps(Highcharts);
 
@@ -23,7 +24,7 @@ export function WorldMap() {
     },
 
     subtitle: {
-      text: "World Population(2016)",
+      text: "Source: <a style='color:#fff' href='https://datahub.io/JohnSnowLabs/population-figures-by-country'>Datahub.io</a>",
       style: {
         color: "#fff",
       },
@@ -49,7 +50,7 @@ export function WorldMap() {
         mapData: WorldMapGeo,
         joinBy: ["iso-a3", "country"],
         name: "Population",
-        borderColor: "black",
+        borderColor: "#fff",
         borderWidth: 0.2,
         states: {
           hover: {
@@ -59,6 +60,82 @@ export function WorldMap() {
         },
       },
     ],
+    credits: {
+      enabled: false,
+    },
+  };
+
+  return (
+    <div style={{ minWidth: "360px", maxWidth: "800px", margin: "1em auto" }}>
+      <HighchartsReact
+        highcharts={Highcharts}
+        constructorType={"mapChart"}
+        options={options}
+      />
+    </div>
+  );
+}
+export function USMap() {
+  const options = {
+    chart: {
+      backgroundColor: "#1c1b2b",
+      borderRadius: 15,
+      height: 600,
+    },
+
+    title: {
+      text: "Unemplyment Rates (2021)",
+      style: {
+        color: "#fff",
+      },
+    },
+
+    subtitle: {
+      text: "Source: <a style='color:#fff' href='https://www.bls.gov/lau/#tables'>bls.gov</a>",
+      style: {
+        color: "#fff",
+      },
+    },
+
+    mapNavigation: {
+      enabled: true,
+      buttonOptions: {
+        verticalAlign: "bottom",
+      },
+    },
+
+    colorAxis: {
+      min: 1,
+      max: 10,
+      type: "logarithmic",
+      labels: {
+        format: "{value}%",
+      },
+    },
+
+    series: [
+      {
+        type: "map",
+        data: WorldMapData.unemploymentData,
+        mapData: USMapGeoJSON,
+        joinBy: ["hc-key", "code"],
+        name: "Unemployment Rate",
+        borderColor: "#000",
+        borderWidth: 0.2,
+        states: {
+          hover: {
+            borderWidth: 1,
+            color: "#c7eda4",
+          },
+        },
+        tooltip: {
+          valueSuffix: "%",
+        },
+      },
+    ],
+    credits: {
+      enabled: false,
+    },
   };
 
   return (

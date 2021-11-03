@@ -1,10 +1,11 @@
 import React from "react";
-import { WorldMap } from "../components/MapCharts";
+import { USMap, WorldMap } from "../components/MapCharts";
 
 function Maps() {
   return (
     <div>
       <WorldMap />
+      <USMap />
     </div>
   );
 }
