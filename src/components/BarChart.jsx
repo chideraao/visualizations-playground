@@ -3,6 +3,9 @@ import Highcharts from "highcharts";
 import React, { useEffect, useState } from "react";
 import { Bar } from "react-chartjs-2";
 import ChartData from "../assets/bar.json";
+import ColorAxis from "highcharts/modules/coloraxis";
+
+ColorAxis(Highcharts);
 
 export function BarChart() {
   const [dataChart, setDataChart] = useState({});
@@ -535,6 +538,88 @@ export function GroupedBar() {
       {
         name: "3",
         data: three,
+      },
+    ],
+    credits: {
+      enabled: false,
+    },
+  };
+
+  return (
+    <div style={{ minWidth: "360px", maxWidth: "800px", margin: "1em auto" }}>
+      <HighchartsReact highcharts={Highcharts} options={options} />
+    </div>
+  );
+}
+
+export function GradientKey() {
+  let options = {
+    title: {
+      text: "Gradient Color axis",
+    },
+    xAxis: {
+      categories: ["1", "2", "3", "4", "5"],
+    },
+    colorAxis: {
+      min: 0,
+      max: 30,
+      minColor: "#ffe8f1",
+      maxColor: "#8a0067",
+    },
+    series: [
+      {
+        type: "column",
+        colorKey: "colorValue",
+        name: "X",
+        data: [
+          {
+            y: 4,
+            colorValue: 4,
+          },
+          {
+            y: 26,
+            colorValue: 26,
+          },
+          {
+            y: 10,
+            colorValue: 10,
+          },
+          {
+            y: 7,
+            colorValue: 7,
+          },
+          {
+            y: 6,
+            colorValue: 6,
+          },
+        ],
+      },
+      {
+        type: "column",
+        colorKey: "colorValue",
+        name: "Y",
+        data: [
+          {
+            y: 10,
+            colorValue: 10,
+          },
+          {
+            y: 29,
+            colorValue: 29,
+          },
+          {
+            y: 16,
+            colorValue: 16,
+          },
+          {
+            y: 20,
+            colorValue: 20,
+          },
+          {
+            y: 30,
+            colorValue: 30,
+          },
+        ],
       },
     ],
     credits: {

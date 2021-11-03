@@ -1,6 +1,7 @@
 import React from "react";
 import {
   BarChart,
+  GradientKey,
   GroupedBar,
   PopulationPyramid,
   StackedBar,
@@ -10,6 +11,7 @@ function Bars() {
   return (
     <div>
       <BarChart />
+      <GradientKey />
       <PopulationPyramid />
       <GroupedBar />
       <StackedBar />

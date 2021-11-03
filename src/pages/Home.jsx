@@ -20,6 +20,9 @@ function Home() {
         <li>
           <Link to="/ohlc-and-candlestick">OHLC & Candlesticks</Link>
         </li>
+        <li>
+          <Link to="/maps">Maps</Link>
+        </li>
       </ul>
     </div>
   );
