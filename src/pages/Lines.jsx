@@ -47,7 +47,7 @@ function Lines() {
   }, [setSparkline]);
 
   return (
-    <div className="container">
+    <div className="container lines">
       <BTCChart splineData={sparkline} />
       <BoostModule />
       <WeatherChart />

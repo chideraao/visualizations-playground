@@ -203,6 +203,7 @@ export function StackedArea() {
 
     yAxis: {
       gridLineColor: "#201d3a",
+      lineWidth: 0.3,
 
       title: {
         text: "",
@@ -240,7 +241,10 @@ export function StackedArea() {
   };
 
   return (
-    <div style={{ minWidth: "360px", maxWidth: "800px", margin: "1em auto" }}>
+    <div
+      className="highcharts-container"
+      style={{ minWidth: "360px", maxWidth: "800px", margin: "1em auto" }}
+    >
       <HighchartsReact highcharts={Highcharts} options={options} />
     </div>
   );
@@ -353,7 +357,10 @@ export function MultiLine() {
   };
 
   return (
-    <div style={{ minWidth: "360px", maxWidth: "800px", margin: "1em auto" }}>
+    <div
+      className="highcharts-container"
+      style={{ minWidth: "360px", maxWidth: "800px", margin: "1em auto" }}
+    >
       <HighchartsReact highcharts={Highcharts} options={options} />
     </div>
   );
@@ -504,7 +511,10 @@ export function WeatherChart() {
   };
 
   return (
-    <div style={{ minWidth: "360px", maxWidth: "800px", margin: "1em auto" }}>
+    <div
+      className="highcharts-container"
+      style={{ minWidth: "360px", maxWidth: "800px", margin: "1em auto" }}
+    >
       <HighchartsReact highcharts={Highcharts} options={options} />
     </div>
   );
@@ -612,7 +622,10 @@ export function BoostModule() {
   return (
     <div>
       <p></p>
-      <div style={{ minWidth: "360px", maxWidth: "800px", margin: "1em auto" }}>
+      <div
+        className="highcharts-container"
+        style={{ minWidth: "360px", maxWidth: "800px", margin: "1em auto" }}
+      >
         <HighchartsReact highcharts={Highcharts} options={options} />
       </div>
     </div>

@@ -304,7 +304,7 @@ export function StackedBar() {
           label: "values 2",
           data: dataTwo,
           fill: "origin",
-          backgroundColor: ["rgb(97, 206, 152)"],
+          backgroundColor: ["#00208a"],
           borderWidth: 1.2,
         },
         {
@@ -312,15 +312,7 @@ export function StackedBar() {
           label: "values",
           data,
           fill: "origin",
-          backgroundColor: ["rgba(97, 206, 152,0.5)"],
-          borderWidth: 1.2,
-        },
-        {
-          type: "bar",
-          label: "values 3",
-          data: dataTwo,
-          fill: "origin",
-          backgroundColor: ["rgb(84, 117, 228)"],
+          backgroundColor: ["rgb(159, 233, 233)"],
           borderWidth: 1.2,
         },
       ],
@@ -345,12 +337,21 @@ export function PopulationPyramid() {
   let options = {
     chart: {
       type: "bar",
+      backgroundColor: "#1c1b2b",
+      borderRadius: 15,
+      height: 600,
     },
     title: {
       text: "Population pyramid for United States, 2020",
+      style: {
+        color: "#fff",
+      },
     },
     subtitle: {
-      text: 'Source: <a href="https://www.populationpyramid.net/united-states-of-america/2020/">PopulationPyramid.net </a>',
+      text: 'Source: <a style="color: #fff" href="https://www.populationpyramid.net/united-states-of-america/2020/">PopulationPyramid.net </a>',
+      style: {
+        color: "#fff",
+      },
     },
     accessibility: {
       point: {
@@ -367,6 +368,7 @@ export function PopulationPyramid() {
         accessibility: {
           description: "Age (female)",
         },
+        lineWidth: 0.4,
       },
       {
         // mirror axis on right side
@@ -380,12 +382,15 @@ export function PopulationPyramid() {
         accessibility: {
           description: "Age (male)",
         },
+        lineWidth: 0.4,
       },
     ],
     yAxis: {
       title: {
         text: null,
       },
+
+      gridLineColor: "#201d3a",
       labels: {
         formatter: function () {
           return Math.abs(this.value / 1000000) + "M";
@@ -397,6 +402,8 @@ export function PopulationPyramid() {
       },
     },
 
+    colors: ["#00208a", "#e040bd"],
+
     plotOptions: {
       series: {
         stacking: "normal",
@@ -405,7 +412,6 @@ export function PopulationPyramid() {
         colorByPoint: true,
       },
     },
-    colors: ["#4e4ed6", "#54832e"],
 
     tooltip: {
       formatter: function () {
@@ -485,12 +491,21 @@ export function GroupedBar() {
   let options = {
     chart: {
       type: "bar",
+      backgroundColor: "#1c1b2b",
+      borderRadius: 15,
+      height: 600,
     },
     title: {
       text: "Grouped Bar Chart",
+      style: {
+        color: "#fff",
+      },
     },
 
-    xAxis: { categories: ["A", "B", "C"] },
+    xAxis: {
+      categories: ["A", "B", "C"],
+      lineWidth: 0.4,
+    },
 
     yAxis: {
       min: 0,
@@ -500,6 +515,7 @@ export function GroupedBar() {
       labels: {
         overflow: "justify",
       },
+      gridLineColor: "#201d3a",
     },
 
     plotOptions: {
@@ -509,6 +525,8 @@ export function GroupedBar() {
         },
       },
     },
+
+    colors: ["#4e4ed6", "#8a27fc", "#00208a", "#e040bd"],
 
     tooltip: {
       formatter: function () {
@@ -554,11 +572,21 @@ export function GroupedBar() {
 
 export function GradientKey() {
   let options = {
+    chart: {
+      backgroundColor: "#1c1b2b",
+      borderRadius: 15,
+      height: 600,
+    },
+
     title: {
       text: "Gradient Color axis",
+      style: {
+        color: "#fff",
+      },
     },
     xAxis: {
       categories: ["1", "2", "3", "4", "5"],
+      lineWidth: 0.4,
     },
     colorAxis: {
       min: 0,
@@ -566,6 +594,11 @@ export function GradientKey() {
       minColor: "#ffe8f1",
       maxColor: "#8a0067",
     },
+
+    yAxis: {
+      gridLineColor: "#201d3a",
+    },
+
     series: [
       {
         type: "column",
