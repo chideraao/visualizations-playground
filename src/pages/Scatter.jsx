@@ -7,7 +7,7 @@ import {
 
 function Scatter() {
   return (
-    <div>
+    <div className="scatter">
       <ScatterPlot />
       <BubblePlot />
       <ScatterRegression />

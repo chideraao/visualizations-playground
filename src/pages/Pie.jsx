@@ -10,7 +10,7 @@ import {
 
 function Pie() {
   return (
-    <div>
+    <div className="pies">
       <PieChart />
       <RadarChart />
       <Donut />

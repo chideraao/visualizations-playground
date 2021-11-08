@@ -7,6 +7,9 @@ export function ScatterPlot() {
 
   /**chart js styling options */
   const chartOptions = {
+    responsive: true,
+    maintainAspectRatio: false,
+    color: "#fff",
     layout: {
       padding: 40,
     },
@@ -24,6 +27,7 @@ export function ScatterPlot() {
           top: 20,
           bottom: 20,
         },
+        color: "#fff",
         font: {
           family: '"Roboto", monospace',
           weight: "500",
@@ -113,6 +117,7 @@ export function ScatterPlot() {
         grid: {
           display: true,
           drawBorder: false,
+          color: "#201d3a",
         },
         title: {
           display: true,
@@ -178,6 +183,9 @@ export function ScatterRegression() {
 
   /**chart js styling options */
   const chartOptions = {
+    responsive: true,
+    maintainAspectRatio: false,
+    color: "#fff",
     layout: {
       padding: 40,
     },
@@ -195,6 +203,7 @@ export function ScatterRegression() {
           top: 20,
           bottom: 20,
         },
+        color: "#fff",
         font: {
           family: '"Roboto", monospace',
           weight: "500",
@@ -284,6 +293,7 @@ export function ScatterRegression() {
         grid: {
           display: true,
           drawBorder: false,
+          color: "#201d3a",
         },
         title: {
           display: true,
@@ -319,7 +329,7 @@ export function ScatterRegression() {
           type: "scatter",
           label: "Female",
           data,
-          backgroundColor: ["rgba(61, 75, 204,.3)"],
+          backgroundColor: ["#5864cc4c"],
           hoverBackgroundColor: "rgb(61, 75, 204)",
           pointStyle: "rectRot",
           borderWidth: 1.7,
@@ -359,6 +369,9 @@ export function BubblePlot() {
 
   /**chart js styling options */
   const chartOptions = {
+    responsive: true,
+    maintainAspectRatio: false,
+    color: "#fff",
     layout: {
       padding: 40,
     },
@@ -376,6 +389,7 @@ export function BubblePlot() {
           top: 20,
           bottom: 20,
         },
+        color: "#fff",
         font: {
           family: '"Roboto", monospace',
           weight: "500",

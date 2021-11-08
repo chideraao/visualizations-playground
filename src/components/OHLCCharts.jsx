@@ -140,6 +140,7 @@ export function StockCharts({ market, ohlc }) {
         color: "#696777",
         dashStyle: "dash",
       },
+      gridLineColor: "#201d3a",
     },
 
     yAxis: [
@@ -169,7 +170,7 @@ export function StockCharts({ market, ohlc }) {
           x: -3,
         },
         top: "55%",
-        height: "30%",
+        height: "29.5%",
         offset: 0,
         lineWidth: 0,
         crosshair: false,
@@ -179,6 +180,7 @@ export function StockCharts({ market, ohlc }) {
       {
         top: "85%",
         height: "15%",
+        gridLineColor: "#201d3a",
       },
     ],
 

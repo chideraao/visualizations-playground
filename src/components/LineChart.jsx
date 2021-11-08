@@ -12,6 +12,8 @@ export function LineChart() {
   /**chart js styling options */
   const chartOptions = {
     /** tooltip styling and logic */
+    responsive: true,
+    maintainAspectRatio: false,
     hover: { mode: "nearest", intersect: false, axis: "x" }, //allow tooltip to show once the mouse is at the nearest defined data item rather than only once it intersects
     plugins: {
       legend: {
@@ -24,6 +26,7 @@ export function LineChart() {
           top: 10,
           bottom: 10,
         },
+        color: "#fff",
         font: {
           family: '"Roboto", monospace',
           weight: "500",

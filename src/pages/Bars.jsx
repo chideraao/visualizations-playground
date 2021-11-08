@@ -9,7 +9,7 @@ import {
 
 function Bars() {
   return (
-    <div>
+    <div className="bars">
       <BarChart />
       <GradientKey />
       <PopulationPyramid />

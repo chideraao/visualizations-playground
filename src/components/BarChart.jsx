@@ -12,6 +12,8 @@ export function BarChart() {
 
   /**chart js styling options */
   const chartOptions = {
+    responsive: true,
+    maintainAspectRatio: false,
     /** tooltip styling and logic */
     hover: { mode: "nearest", intersect: false, axis: "x" }, //allow tooltip to show once the mouse is at the nearest defined data item rather than only once it intersects
     plugins: {
@@ -26,6 +28,8 @@ export function BarChart() {
           top: 10,
           bottom: 10,
         },
+        color: "#fff",
+
         font: {
           family: '"Roboto", monospace',
           weight: "500",
@@ -172,6 +176,9 @@ export function StackedBar() {
 
   /**chart js styling options */
   const chartOptions = {
+    color: "#fff",
+    responsive: true,
+    maintainAspectRatio: false,
     /** tooltip styling and logic */
     hover: { mode: "nearest", intersect: false, axis: "x" }, //allow tooltip to show once the mouse is at the nearest defined data item rather than only once it intersects
     plugins: {
@@ -182,6 +189,7 @@ export function StackedBar() {
           top: 10,
           bottom: 10,
         },
+        color: "#fff",
         font: {
           family: '"Roboto", monospace',
           weight: "500",
@@ -544,18 +552,22 @@ export function GroupedBar() {
       {
         name: "0",
         data: zero,
+        borderColor: "#201d3a",
       },
       {
         name: "1",
         data: one,
+        borderColor: "#201d3a",
       },
       {
         name: "2",
         data: two,
+        borderColor: "#201d3a",
       },
       {
         name: "3",
         data: three,
+        borderColor: "#201d3a",
       },
     ],
     credits: {

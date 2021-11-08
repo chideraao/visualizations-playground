@@ -12,6 +12,9 @@ export function PieChart() {
 
   /**chart js styling options */
   const chartOptions = {
+    responsive: true,
+    maintainAspectRatio: false,
+    color: "#fff",
     layout: {
       padding: 40,
     },
@@ -26,6 +29,7 @@ export function PieChart() {
           top: 20,
           bottom: 20,
         },
+        color: "#fff",
         font: {
           family: '"Roboto", monospace',
           weight: "500",
@@ -135,11 +139,20 @@ export function PieChart() {
           type: "pie",
           label: "prices",
           data,
-          borderColor: ["rgb(255, 255, 255)"],
           fill: "origin",
           backgroundColor: [
+            "rgba(61, 75, 204,.2)",
+            "rgba(78, 166, 74,.2)",
+            "rgba(204, 106, 61,.2)",
+            "rgba(204, 61, 128,.2)",
+            "rgba(61, 152, 204,.2)",
+            "rgba(141, 18, 110,.2)",
+            "rgba(118, 141, 18,.2)",
+            "rgba(138, 80, 66,.2)",
+          ],
+          borderColor: [
             "rgba(61, 75, 204)",
-            "rgba(54, 134, 88)",
+            "rgba(78, 166, 74)",
             "rgba(204, 106, 61)",
             "rgba(204, 61, 128)",
             "rgba(61, 152, 204)",
@@ -147,7 +160,7 @@ export function PieChart() {
             "rgba(118, 141, 18)",
             "rgba(138, 80, 66)",
           ],
-          borderWidth: 3,
+          borderWidth: 0.5,
           hoverOffset: 30,
         },
       ],
@@ -166,6 +179,9 @@ export function Donut() {
 
   /**chart js styling options */
   const chartOptions = {
+    responsive: true,
+    maintainAspectRatio: false,
+    color: "#fff",
     layout: {
       padding: 40,
     },
@@ -180,6 +196,7 @@ export function Donut() {
           top: 20,
           bottom: 20,
         },
+        color: "#fff",
         font: {
           family: '"Roboto", monospace',
           weight: "500",
@@ -228,6 +245,8 @@ export function Donut() {
         },
       },
     },
+
+    cutout: "70%",
 
     scales: {
       x: {
@@ -292,16 +311,14 @@ export function Donut() {
           borderColor: ["rgb(255, 255, 255)"],
           fill: "origin",
           backgroundColor: [
-            "rgba(61, 75, 204)",
-            "rgba(54, 134, 88)",
-            "rgba(204, 106, 61)",
-            "rgba(204, 61, 128)",
-            "rgba(61, 152, 204)",
+            "#6a29eb",
+            "#0b5cb3",
+            "#b424dc",
+            "#0ab0c2",
+            "#1b2dba",
             "rgba(141, 18, 110)",
-            "rgba(118, 141, 18)",
-            "rgba(138, 80, 66)",
           ],
-          borderWidth: 1.7,
+          borderWidth: 0.5,
           hoverOffset: 30,
         },
       ],
@@ -320,6 +337,9 @@ export function DoubleDonut() {
 
   /**chart js styling options */
   const chartOptions = {
+    responsive: true,
+    maintainAspectRatio: false,
+    color: "#fff",
     layout: {
       padding: 40,
     },
@@ -334,6 +354,7 @@ export function DoubleDonut() {
           top: 20,
           bottom: 20,
         },
+        color: "#fff",
         font: {
           family: '"Roboto", monospace',
           weight: "500",
@@ -382,6 +403,7 @@ export function DoubleDonut() {
         },
       },
     },
+    cutout: "60%",
 
     scales: {
       x: {
@@ -459,10 +481,8 @@ export function DoubleDonut() {
             "rgba(204, 61, 128)",
             "rgba(61, 152, 204)",
             "rgba(141, 18, 110)",
-            "rgba(118, 141, 18)",
-            "rgba(138, 80, 66)",
           ],
-          borderWidth: 1.7,
+          borderWidth: 0.5,
           hoverOffset: 30,
           rotation: 30,
         },
@@ -479,10 +499,8 @@ export function DoubleDonut() {
             "rgba(204, 61, 128)",
             "rgba(61, 152, 204)",
             "rgba(141, 18, 110)",
-            "rgba(118, 141, 18)",
-            "rgba(138, 80, 66)",
           ],
-          borderWidth: 1.7,
+          borderWidth: 0.5,
           hoverOffset: 30,
           rotation: 35,
         },
@@ -502,6 +520,9 @@ export function RadarChart() {
 
   /**chart js styling options */
   const chartOptions = {
+    responsive: true,
+    maintainAspectRatio: false,
+    color: "#fff",
     layout: {
       padding: 40,
     },
@@ -516,6 +537,7 @@ export function RadarChart() {
           top: 20,
           bottom: 20,
         },
+        color: "#fff",
         font: {
           family: '"Roboto", monospace',
           weight: "500",
@@ -565,41 +587,16 @@ export function RadarChart() {
     },
 
     scales: {
-      x: {
-        offset: false,
-        beginAtZero: false,
-        grid: {
-          color: "transparent",
-          display: false, //removes gridline display
-          drawBorder: true,
-        },
-        distribution: "series",
-        display: false,
-        ticks: {
-          //basic styling of the ticks(axis)
-          fontSize: 18,
-          lineHeight: 1.2,
-          fontFamily: '"Roboto", sans-serif',
-          fontWeight: "300",
-          padding: 0,
-          fontColor: "rgba(17, 51, 83, 0.3)",
-          maxTicksLimit: 20,
-          minRotation: 0,
-          maxRotation: 0,
-        },
-      },
-
-      y: {
-        display: false,
-        beginAtZero: true,
-
-        ticks: {
-          display: true,
+      r: {
+        angleLines: {
+          color: "#201d3a",
         },
         grid: {
-          color: "blue",
-          display: false,
-          drawBorder: true,
+          color: "#201d3a",
+        },
+        ticks: {
+          color: "#574545",
+          backdropColor: "#1c1b2b",
         },
       },
     },
@@ -661,6 +658,9 @@ export function PolarChart() {
 
   /**chart js styling options */
   const chartOptions = {
+    responsive: true,
+    maintainAspectRatio: false,
+    color: "#fff",
     layout: {
       padding: 40,
     },
@@ -675,6 +675,7 @@ export function PolarChart() {
           top: 20,
           bottom: 20,
         },
+        color: "#fff",
         font: {
           family: '"Roboto", monospace',
           weight: "500",
@@ -724,41 +725,16 @@ export function PolarChart() {
     },
 
     scales: {
-      x: {
-        offset: false,
-        beginAtZero: false,
-        grid: {
-          color: "transparent",
-          display: false, //removes gridline display
-          drawBorder: true,
-        },
-        distribution: "series",
-        display: false,
-        ticks: {
-          //basic styling of the ticks(axis)
-          fontSize: 18,
-          lineHeight: 1.2,
-          fontFamily: '"Roboto", sans-serif',
-          fontWeight: "300",
-          padding: 0,
-          fontColor: "rgba(17, 51, 83, 0.3)",
-          maxTicksLimit: 20,
-          minRotation: 0,
-          maxRotation: 0,
-        },
-      },
-
-      y: {
-        display: false,
-        beginAtZero: true,
-
-        ticks: {
-          display: true,
+      r: {
+        angleLines: {
+          color: "#201d3a",
         },
         grid: {
-          color: "blue",
-          display: false,
-          drawBorder: true,
+          color: "#201d3a",
+        },
+        ticks: {
+          color: "#574545",
+          backdropColor: "#1c1b2b",
         },
       },
     },
@@ -826,9 +802,14 @@ export function PolarLine() {
   let options = {
     chart: {
       polar: true,
+      backgroundColor: "#1c1b2b",
+      borderRadius: 15,
     },
     title: {
       text: "Polar Line Chart",
+      style: {
+        color: "#fff",
+      },
     },
 
     xAxis: {
@@ -838,10 +819,14 @@ export function PolarLine() {
       labels: {
         format: "{value}°",
       },
+      gridLineColor: "#302c53",
+      lineWidth: 0.4,
     },
 
     yAxis: {
       min: 0,
+      gridLineColor: "#302c53",
+      lineWidth: 0.5,
     },
 
     plotOptions: {

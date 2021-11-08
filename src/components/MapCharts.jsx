@@ -17,14 +17,14 @@ export function WorldMap() {
     },
 
     title: {
-      text: "Population Figures by Country (2016)",
+      text: "Simple Chloropleth Map",
       style: {
         color: "#fff",
       },
     },
 
     subtitle: {
-      text: "Source: <a style='color:#fff' href='https://datahub.io/JohnSnowLabs/population-figures-by-country'>Datahub.io</a>",
+      text: "Source: <a style='color:#fff' href='https://datahub.io/JohnSnowLabs/population-figures-by-country'>Datahub.io (2016)</a>",
       style: {
         color: "#fff",
       },
@@ -84,14 +84,14 @@ export function USMap() {
     },
 
     title: {
-      text: "Unemplyment Rates (2021)",
+      text: "Chloropleth Map with over 3000 Data Points",
       style: {
         color: "#fff",
       },
     },
 
     subtitle: {
-      text: "Source: <a style='color:#fff' href='https://www.bls.gov/lau/#tables'>bls.gov</a>",
+      text: "Source: <a style='color:#fff' href='https://www.bls.gov/lau/#tables'>bls.gov (2021)</a>",
       style: {
         color: "#fff",
       },
