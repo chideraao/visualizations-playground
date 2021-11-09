@@ -114,3 +114,38 @@ img {
     display: none;
   }
 }
+
+.load-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.load-screen {
+  position: relative;
+  padding-top: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+  background-color: #19bc8b;
+  width: 0%;
+  height: 100%;
+}
+
+.load-screen1 {
+  position: relative;
+  padding-top: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+  background-color: #1c1b2b;
+  width: 100%;
+  height: 0%;
+}
+
+.Headd {
+  opacity: 0;
+  pointer-events: none;
+}
