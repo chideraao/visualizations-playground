@@ -42,7 +42,7 @@ function Home() {
   });
 
   return (
-    <div>
+    <div className="home">
       <div className="load-container">
         <div
           className="load-screen1"
@@ -56,7 +56,7 @@ function Home() {
           <h1>MY PRECIOUS</h1>
         </div>
       </div>
-      <div className="Headd" ref={(el) => (body = el)}>
+      <div className="headd" ref={(el) => (body = el)}>
         <ul>
           <li>
             <Link to="/lines"> Lines & Area</Link>
