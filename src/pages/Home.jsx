@@ -76,7 +76,7 @@ function Home() {
             Pie & Donut <Left />
           </Link>
           <Link to="/scatter">
-            Bubble & Scatter Plots <Left />
+            Bubble & Scatter <Left />
           </Link>
           <Link to="/ohlc-and-candlestick">
             OHLC & Candlesticks <Left />
