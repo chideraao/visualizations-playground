@@ -28,7 +28,7 @@ export function LineChart() {
         },
         color: "#fff",
         font: {
-          family: '"Roboto", monospace',
+          family: '"Syne Mono", monospace',
           weight: "500",
           size: 18,
           lineHeight: 1,
@@ -171,6 +171,7 @@ export function StackedArea() {
       padding: 40,
       style: {
         color: "#fff",
+        fontFamily: '"Syne Mono", monospace',
       },
     },
 
@@ -221,6 +222,7 @@ export function StackedArea() {
       align: "center",
       itemStyle: {
         color: "#fff",
+        fontFamily: '"Syne Mono", monospace',
       },
       verticalAlign: "bottom",
       margin: 30,
@@ -265,12 +267,14 @@ export function MultiLine() {
       text: "Annual GDP Growth(%)",
       style: {
         color: "#fff",
+        fontFamily: '"Syne Mono", monospace',
       },
     },
     subtitle: {
       text: "Source: <a style='color: #fff;' href='https://data.worldbank.org/indicator/NY.GDP.MKTP.KD.ZG'> worldbank.org</a> ",
       style: {
         color: "#fff",
+        fontFamily: '"Syne Mono", monospace',
       },
     },
 
@@ -300,6 +304,7 @@ export function MultiLine() {
       margin: 30,
       itemStyle: {
         color: "#fff",
+        fontFamily: '"Syne Mono", monospace',
       },
     },
 
@@ -380,12 +385,14 @@ export function WeatherChart() {
       text: "Average Monthly Temperatures by Cities(°C)",
       style: {
         color: "#fff",
+        fontFamily: '"Syne Mono", monospace',
       },
     },
     subtitle: {
       text: "Source: <a style='color:#fff' href='https://en.wikipedia.org/wiki/List_of_cities_by_average_temperature'> en.wikipedia.org</> ",
       style: {
         color: "#fff",
+        fontFamily: '"Syne Mono", monospace',
       },
     },
     colors: ["#4e4ed6", "#8edcf0", "#ec11da", "#54832e"],
@@ -430,6 +437,7 @@ export function WeatherChart() {
       margin: 30,
       itemStyle: {
         color: "#fff",
+        fontFamily: '"Syne Mono", monospace',
       },
     },
 
@@ -570,6 +578,7 @@ export function BoostModule() {
       text: "Demonstrating Boost Module with " + n + " random points",
       style: {
         color: "#fff",
+        fontFamily: '"Syne Mono", monospace',
       },
     },
 
@@ -578,6 +587,7 @@ export function BoostModule() {
       desired area to zoom in.`,
       style: {
         color: "#fff",
+        fontFamily: '"Syne Mono", monospace',
       },
     },
 
@@ -604,6 +614,7 @@ export function BoostModule() {
       margin: 30,
       itemStyle: {
         color: "#fff",
+        fontFamily: '"Syne Mono", monospace',
       },
     },
 

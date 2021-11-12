@@ -34,6 +34,7 @@ export function StockCharts({ market, ohlc }) {
       text: "Candlestick, Volume & SMA Indicator",
       style: {
         color: "#fff",
+        fontFamily: '"Syne Mono", monospace',
       },
     },
 
@@ -310,6 +311,7 @@ export function CandlesticksvHeikin({ ohlc }) {
       text: "Candlestick vs Heikin Ashi",
       style: {
         color: "#fff",
+        fontFamily: '"Syne Mono", monospace',
       },
     },
 
@@ -588,6 +590,7 @@ export function CandleSticks() {
       text: "Candlestick, Volume & Awesome Oscillator",
       style: {
         color: "#fff",
+        fontFamily: '"Syne Mono", monospace',
       },
     },
 
@@ -850,6 +853,7 @@ export function AreaSpline({ splineData }) {
       text: "Spline Chart Showing Prices",
       style: {
         color: "#fff",
+        fontFamily: '"Syne Mono", monospace',
       },
     },
 

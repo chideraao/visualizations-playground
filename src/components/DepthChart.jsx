@@ -15,6 +15,7 @@ export function DepthChart() {
       text: "Market Depth",
       style: {
         color: "#fff",
+        fontFamily: '"Syne Mono", monospace',
       },
     },
     xAxis: {
@@ -30,6 +31,7 @@ export function DepthChart() {
             rotation: 90,
             style: {
               color: "#4F6C89",
+              fontFamily: '"Syne Mono", monospace',
             },
           },
         },

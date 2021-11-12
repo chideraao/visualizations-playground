@@ -31,7 +31,8 @@ export function BarChart() {
         color: "#fff",
 
         font: {
-          family: '"Roboto", monospace',
+          family: '"Syne Mono", monospace',
+
           weight: "500",
           size: 18,
           lineHeight: 1,
@@ -53,7 +54,8 @@ export function BarChart() {
         bodyAlign: "center",
         titleColor: "#333",
         titleFont: {
-          family: '"Roboto", monospace',
+          family: '"Syne Mono", monospace',
+
           weight: "500",
           size: 18,
           lineHeight: 1,
@@ -93,7 +95,8 @@ export function BarChart() {
           //basic styling of the ticks(axis)
           fontSize: 18,
           lineHeight: 1.2,
-          fontFamily: '"Roboto", sans-serif',
+          family: '"Syne Mono", monospace',
+
           fontWeight: "300",
           padding: 0,
           fontColor: "rgba(17, 51, 83, 0.3)",
@@ -191,7 +194,8 @@ export function StackedBar() {
         },
         color: "#fff",
         font: {
-          family: '"Roboto", monospace',
+          family: '"Syne Mono", monospace',
+
           weight: "500",
           size: 18,
           lineHeight: 1,
@@ -213,7 +217,8 @@ export function StackedBar() {
         bodyAlign: "center",
         titleColor: "#333",
         titleFont: {
-          family: '"Roboto", monospace',
+          family: '"Syne Mono", monospace',
+
           weight: "500",
           size: 18,
           lineHeight: 1,
@@ -254,7 +259,8 @@ export function StackedBar() {
           //basic styling of the ticks(axis)
           fontSize: 18,
           lineHeight: 1.2,
-          fontFamily: '"Roboto", sans-serif',
+          family: '"Syne Mono", monospace',
+
           fontWeight: "300",
           padding: 0,
           fontColor: "rgba(17, 51, 83, 0.3)",
@@ -353,12 +359,14 @@ export function PopulationPyramid() {
       text: "Population pyramid for United States, 2020",
       style: {
         color: "#fff",
+        fontFamily: '"Syne Mono", monospace',
       },
     },
     subtitle: {
       text: 'Source: <a style="color: #fff" href="https://www.populationpyramid.net/united-states-of-america/2020/">PopulationPyramid.net </a>',
       style: {
         color: "#fff",
+        fontFamily: '"Syne Mono", monospace',
       },
     },
     accessibility: {
@@ -507,6 +515,7 @@ export function GroupedBar() {
       text: "Grouped Bar Chart",
       style: {
         color: "#fff",
+        fontFamily: '"Syne Mono", monospace',
       },
     },
 
@@ -594,6 +603,7 @@ export function GradientKey() {
       text: "Gradient Color axis",
       style: {
         color: "#fff",
+        fontFamily: '"Syne Mono", monospace',
       },
     },
     xAxis: {

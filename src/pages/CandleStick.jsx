@@ -8,6 +8,7 @@ import {
   CandlesticksvHeikin,
   StockCharts,
 } from "../components/OHLCCharts";
+import Loader from "../components/Loader.jsx";
 
 function CandleStick() {
   const [OHLC, setOHLC] = useState([]);
@@ -16,8 +17,10 @@ function CandleStick() {
   const [heikin, setHeikin] = useState([]);
   const [ethMarket, setEthMarket] = useState([]);
   const [splineData, setSplineData] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    setLoading(true);
     axios
       .all([
         axios.get(
@@ -46,19 +49,27 @@ function CandleStick() {
         setHeikin(res[3].data);
         setEthMarket(res[4].data);
         setSplineData(res[5].data);
+        setLoading(false);
       });
   }, []);
 
   return (
     <div>
-      <AreaSpline splineData={splineData} />
-      <OHLCChart hlc={HLC} />
-      <CandleSticks />
-      <DepthChart />
-      <HeikenAshi heikin={heikin} market={ethMarket} />
-      <HLCChart ohlc={HLC} />
-      <CandlesticksvHeikin ohlc={OHLC} />
-      <StockCharts market={market} ohlc={OHLC} />
+      {loading ? (
+        <Loader />
+      ) : (
+        <>
+          {" "}
+          <AreaSpline splineData={splineData} />
+          <OHLCChart hlc={HLC} />
+          <CandleSticks />
+          <DepthChart />
+          <HeikenAshi heikin={heikin} market={ethMarket} />
+          <HLCChart ohlc={HLC} />
+          <CandlesticksvHeikin ohlc={OHLC} />
+          <StockCharts market={market} ohlc={OHLC} />
+        </>
+      )}
     </div>
   );
 }

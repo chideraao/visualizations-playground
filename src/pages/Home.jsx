@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import gsap, { Power3, Power4 } from "gsap";
+import { ReactComponent as Left } from "../assets/left_arrow.svg";
 
 function Home() {
   let screen = useRef(null);
@@ -53,30 +54,51 @@ function Home() {
           }}
           ref={(el) => (screen = el)}
         >
-          <h1>MY PRECIOUS</h1>
+          <h1
+            style={{
+              backgroundColor: "transparent",
+            }}
+          >
+            WELCOME, PRECIOUS
+          </h1>
         </div>
       </div>
       <div className="headd" ref={(el) => (body = el)}>
-        <ul>
-          <li>
-            <Link to="/lines"> Lines & Area</Link>
-          </li>
-          <li>
-            <Link to="/bars">Bars </Link>
-          </li>
-          <li>
-            <Link to="/pie">Pie & Donut</Link>
-          </li>
-          <li>
-            <Link to="/scatter">Bubble & Scatter Plots</Link>
-          </li>
-          <li>
-            <Link to="/ohlc-and-candlestick">OHLC & Candlesticks</Link>
-          </li>
-          <li>
-            <Link to="/maps">Maps</Link>
-          </li>
-        </ul>
+        <div>
+          <Link to="/lines">
+            {" "}
+            Lines & Area <Left />
+          </Link>
+          <Link to="/bars">
+            Bars <Left />{" "}
+          </Link>
+          <Link to="/pie">
+            Pie & Donut <Left />
+          </Link>
+          <Link to="/scatter">
+            Bubble & Scatter Plots <Left />
+          </Link>
+          <Link to="/ohlc-and-candlestick">
+            OHLC & Candlesticks <Left />
+          </Link>
+          <Link to="/maps">
+            Maps <Left />
+          </Link>
+        </div>
+        <div className="footer">
+          <span>
+            {" "}
+            Made with &#x2764;&#xfe0f; by{" "}
+            <a
+              href="https://dhera.dev/"
+              target="_blank"
+              rel="noreferrer"
+              style={{ color: "#fff", textDecoration: "underline" }}
+            >
+              Chidera Okeke
+            </a>
+          </span>
+        </div>
       </div>
     </div>
   );
