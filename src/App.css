@@ -104,6 +104,20 @@ a {
   box-shadow: inset 25rem 0 0 0 rgba(26, 80, 139, 0.4);
 }
 
+.home .headd > :first-child a:hover svg {
+  animation: scaling 2s ease-in-out infinite;
+  animation-direction: alternate;
+}
+
+@keyframes scaling {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.1);
+  }
+}
+
 .chart-container {
   position: relative;
   height: 60vh;

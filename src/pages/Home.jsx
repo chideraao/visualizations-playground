@@ -69,20 +69,20 @@ function Home() {
             {" "}
             Lines & Area <Left />
           </Link>
+          <Link to="/ohlc-and-candlestick">
+            OHLC & Candlesticks <Left />
+          </Link>
           <Link to="/bars">
             Bars <Left />{" "}
+          </Link>
+          <Link to="/maps">
+            Maps <Left />
           </Link>
           <Link to="/pie">
             Pie & Donut <Left />
           </Link>
           <Link to="/scatter">
             Bubble & Scatter <Left />
-          </Link>
-          <Link to="/ohlc-and-candlestick">
-            OHLC & Candlesticks <Left />
-          </Link>
-          <Link to="/maps">
-            Maps <Left />
           </Link>
         </div>
         <div className="footer">
