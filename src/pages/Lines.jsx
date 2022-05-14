@@ -51,9 +51,9 @@ function Lines() {
       <BTCChart splineData={sparkline} />
       <BoostModule />
       <WeatherChart />
+      <MultiLine />
       <StackedArea />
       <LineChart />
-      <MultiLine />
     </div>
   );
 }
